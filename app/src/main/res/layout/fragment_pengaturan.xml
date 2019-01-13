@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorText">
+
+
+    <TextView
+        android:layout_marginTop="40dp"
+        android:id="@+id/link_logout"
+        android:layout_width="match_parent"
+        android:text="Log Out >"
+        android:textSize="25dp"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:layout_marginTop="370dp"
+        android:gravity="center"
+        android:id="@+id/mercy"
+        android:layout_below="@+id/link_logout"
+        android:layout_width="match_parent"
+        android:text="Mercy Shop"
+        android:textSize="25dp"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:gravity="center"
+        android:id="@+id/versi"
+        android:layout_below="@+id/mercy"
+        android:layout_width="match_parent"
+        android:text="Version 1.0.0"
+        android:textSize="25dp"
+        android:layout_height="wrap_content" />
+</RelativeLayout>

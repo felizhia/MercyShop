@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TasActivity">
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/awal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/tasthumbnail"
+                android:layout_width="180dp"
+                android:layout_height="173dp"
+                android:background="@android:color/black"
+                android:scaleType="fitXY" />
+
+            <TextView
+                android:id="@+id/judultas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginEnd="59dp"
+                android:paddingTop="3dp"
+                android:text="Judul Text"
+                android:textAlignment="center"
+                android:textSize="15dp" />
+
+            <TextView
+                android:id="@+id/kategori"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_below="@+id/judultas"
+                android:layout_toRightOf="@+id/tasthumbnail"
+                android:background="#e6e6e6"
+                android:paddingTop="5dp"
+                android:text="Kategori"
+                android:textAlignment="center"
+                android:textSize="13dp" />
+
+            <TextView
+                android:id="@+id/rating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_below="@+id/kategori"
+                android:layout_toRightOf="@+id/tasthumbnail"
+                android:paddingTop="5dp"
+                android:text="Rating dan Pelayanan Kami"
+                android:textAlignment="center"
+                android:textSize="13dp" />
+
+            <RatingBar
+                android:id="@+id/ratingBar"
+                android:layout_width="245dp"
+                android:layout_height="40dp"
+                android:layout_alignParentEnd="true"
+                android:layout_below="@+id/rating"
+                android:layout_marginRight="-54dp"
+                android:isIndicator="true"
+                android:numStars="5"
+                android:scaleX="0.7"
+                android:scaleY="0.7"
+                android:transformPivotX="15dp"
+                android:transformPivotY="15dp" />
+
+            <com.hsalf.smilerating.SmileRating
+                android:id="@+id/smile_rating"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/ratingBar"
+                android:layout_toRightOf="@id/tasthumbnail"
+                android:isIndicator="true"
+                android:scaleX="0.8"
+                android:scaleY="0.8" />
+
+
+            <TextView
+                android:id="@+id/deskripsijudul"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/tasthumbnail"
+                android:paddingLeft="20dp"
+                android:paddingTop="20dp"
+                android:text="Deskripsi:"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/deskripsi"
+                android:layout_width="245dp"
+                android:layout_height="257dp"
+                android:layout_below="@+id/deskripsijudul"
+                android:paddingBottom="200dp"
+                android:paddingLeft="20dp"
+                android:paddingTop="3dp"
+                android:text="Deskripsi:"
+                android:textSize="15dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:textAlignment="center"
+                android:id="@+id/Harga"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_toRightOf="@+id/deskripsi"
+                android:layout_below="@+id/deskripsijudul"
+                android:paddingTop="20dp"
+                android:text="Harga :"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/harga"
+                android:layout_width="141dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_below="@+id/Harga"
+                android:layout_toRightOf="@+id/deskripsi"
+                android:paddingBottom="10dp"
+                android:paddingLeft="20dp"
+                android:paddingTop="3dp"
+                android:text="harga"
+                android:textAlignment="center"
+                android:textSize="13dp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/tambahbelanja"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/deskripsi"
+                android:layout_margin="20dp"
+                android:background="@color/colorAccent"
+                android:text="Tambah Ke Keranjang Belanja" />
+        </RelativeLayout>
+    </android.support.v4.widget.NestedScrollView>
+</LinearLayout>

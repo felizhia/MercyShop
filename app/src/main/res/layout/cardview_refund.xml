@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:id="@+id/cardrefund"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    app:cardCornerRadius="4dp">
+
+    <RelativeLayout
+        android:background="@color/colorText"
+        android:paddingTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="4dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:text="Data Refund"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:id="@+id/status1" />
+        <TextView
+            android:paddingTop="10dp"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/status1"
+            android:layout_marginLeft="15dp"
+            android:text="Nama :"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:id="@+id/nm2" />
+
+        <TextView
+            android:id="@+id/kmn1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/status1"
+            android:layout_toRightOf="@+id/nm2"
+            android:paddingTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="6dp"
+            android:text="Verisyaa Mangala"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+        <TextView
+            android:paddingTop="10dp"
+            android:layout_width="90dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/nm2"
+            android:layout_marginLeft="15dp"
+            android:text="No Telp :"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:id="@+id/no2" />
+
+        <TextView
+            android:id="@+id/noval"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/kmn1"
+            android:layout_toEndOf="@+id/nm2"
+            android:paddingTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:text="08166277365"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+        <TextView
+            android:paddingTop="10dp"
+            android:layout_width="90dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/no2"
+            android:layout_marginLeft="15dp"
+            android:text="Alamat :"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:id="@+id/almt" />
+
+        <TextView
+            android:id="@+id/sno"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/noval"
+            android:layout_toEndOf="@+id/nm2"
+            android:paddingTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="7dp"
+            android:text="Jl. Kalasan Indah Permai RT 007 / RW002, Bandung, Jawa Barat"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+        <TextView
+            android:paddingTop="15dp"
+            android:layout_width="90dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/almt"
+            android:layout_marginLeft="15dp"
+            android:text="Kode Barang :"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:id="@+id/kode" />
+
+        <TextView
+            android:id="@+id/kode1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/sno"
+            android:layout_toRightOf="@+id/kode"
+            android:paddingTop="10dp"
+            android:layout_marginTop="35dp"
+            android:text="BG-6472"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+        <TextView
+            android:paddingTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/kode"
+            android:layout_marginLeft="15dp"
+            android:text="Alasan Pengembalian :"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:id="@+id/alsn" />
+
+        <TextView
+            android:id="@+id/valsn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/alsn"
+            android:layout_marginLeft="15dp"
+            android:paddingTop="10dp"
+            android:text="Tas tidak ada talinya dan ada cacat di bagian belakang tas"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+</android.support.v7.widget.CardView>

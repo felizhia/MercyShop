@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/tsimp"
+        android:scaleType="fitXY"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:src="@drawable/tasimport"
+        tools:ignore="ContentDescription" />
+    <TextView
+        android:layout_below="@+id/tsimp"
+        android:id="@+id/imp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Our Import Product"
+        android:textSize="13dp"
+        android:paddingTop="10dp"
+        android:paddingLeft="10dp"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/impor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imp"
+        android:paddingTop="15dp" />
+</RelativeLayout>

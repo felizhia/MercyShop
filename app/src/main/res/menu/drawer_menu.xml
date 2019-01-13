@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single"
+        android:id="@+id/nav_view">
+        <item
+            android:id="@+id/nav_beranda"
+            android:icon="@drawable/ic_beranda"
+            android:title="Beranda" />
+        <item
+            android:id="@+id/nav_kategori"
+            android:icon="@drawable/ic_kategori"
+            android:title="Kategori">
+            <menu>
+                <item
+                    android:id="@+id/nav_taslokal"
+                    android:icon="@drawable/ic_taslokal"
+                    android:title="Tas Lokal" />
+                <item
+                    android:id="@+id/nav_tasimport"
+                    android:icon="@drawable/ic_import"
+                    android:title="Tas Import" />
+            </menu>
+        </item>
+        <item
+            android:id="@+id/nav_transaksi"
+            android:icon="@drawable/ic_transaksi"
+            android:title="Transaksi">
+            <menu>
+                <item
+                    android:id="@+id/nav_status"
+                    android:icon="@drawable/ic_status"
+                    android:title="Status Transaksi" />
+            </menu>
+        </item>
+        <item android:title="Lainnya">
+            <menu>
+        <item
+            android:id="@+id/nav_belanja"
+            android:icon="@drawable/ic_belanja"
+            android:title="Keranjang Belanja" />
+        <item
+            android:id="@+id/nav_komplain"
+            android:icon="@drawable/ic_komplain"
+            android:title="Komplain" />
+        <item
+            android:id="@+id/nav_refund"
+            android:icon="@drawable/ic_refund"
+            android:title="Refund" />
+        <item
+            android:id="@+id/nav_pengaturan"
+            android:icon="@drawable/ic_pengaturan"
+            android:title="Pengaturan" />
+            </menu>
+        </item>
+    </group>
+</menu>
