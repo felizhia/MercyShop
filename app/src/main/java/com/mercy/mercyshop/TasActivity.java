@@ -33,7 +33,6 @@ import java.util.Vector;
 
 public class TasActivity extends AppCompatActivity {
     private TextView tvtitle,tvcategory,tvdesc,tvhrg,nama,hrg;
-    private ImageView img;
     private Button btnblnja;
     private RatingBar rating;
     private SmileRating smile;
@@ -53,50 +52,28 @@ public class TasActivity extends AppCompatActivity {
         tvcategory=findViewById(R.id.kategori);
         tvdesc=findViewById(R.id.deskripsi);
         tvhrg = findViewById(R.id.harga);
-        img=findViewById(R.id.tasthumbnail);
         btnblnja = findViewById(R.id.tambahbelanja);
         rating = findViewById(R.id.ratingBar);
         smile = findViewById(R.id.smile_rating);
 
+        Intent intent= getIntent();
+        title = intent.getExtras().getString("Title");
+        String Category = intent.getExtras().getString("Category");
+        String Description = intent.getExtras().getString("Description");
+        price = intent.getExtras().getString("Harga");
+        productImage = intent.getExtras().getInt("Img");
+
+        tvtitle.setText(title);
+        tvcategory.setText(Category);
+        tvdesc.setText(Description);
+        tvhrg.setText(price);
+
         btnblnja.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                KeranjangFragment.example.add(new Product(title,productImage,price));
-                example.contains(title);
-                example.contains(productImage);
-                example.contains(price);
+                KeranjangFragment.example.add(new Product(title, productImage, price));
                 finish();
             }
         });
-
-        Intent intent= getIntent();
-        String Title = intent.getExtras().getString("Title");
-        String Category = intent.getExtras().getString("Category");
-        String Description = intent.getExtras().getString("Description");
-        String Harga = intent.getExtras().getString("Harga");
-        int image = intent.getExtras().getInt("Img");
-
-        tvtitle.setText(Title);
-        tvcategory.setText(Category);
-        tvdesc.setText(Description);
-        tvhrg.setText(Harga);
-        img.setImageResource(image);
-
-
-
     }
-    public static List<Product> findData(){
-        if (example == null) {
-            example = new Vector<Product>();
-            example.add(new Product("Tas Serbaguna Kecil", R.drawable.bagmini, "50.000"));
-            example.add(new Product("Tas Serbaguna Besar", R.drawable.greybag, "70.000"));
-            example.add(new Product("Tas Serbaguna Sedang", R.drawable.bagblack, "120.000"));
-            example.add(new Product("Pouch Wanita Sedang", R.drawable.pouch, "50.000"));
-            example.add(new Product("Tas Pink Mini", R.drawable.pinkmini, "70.000"));
-            example.add(new Product("Tas ToteBag", R.drawable.totebag, "85.000"));
-            example.add(new Product("Tas Totebag fold", R.drawable.totebagorange, "100.000"));
-        }
-        return example;
-    }
-
 }

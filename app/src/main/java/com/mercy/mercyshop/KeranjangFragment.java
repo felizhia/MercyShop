@@ -37,10 +37,9 @@ public class KeranjangFragment extends Fragment {
         rec.setLayoutManager(aw1);
 
 
-        madapter = new ProductAdapter(getContext(),example,getLayoutInflater());
+        madapter = new ProductAdapter(getContext(), example, getLayoutInflater());
         rec.setAdapter(madapter);
         madapter.notifyDataSetChanged();
-        findData();
 
         total = krnjg.findViewById(R.id.vtotal);
         btnpesan = krnjg.findViewById(R.id.btnpsn);
@@ -59,19 +58,4 @@ public class KeranjangFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
-
-    public static List<Product> findData(){
-        if (example == example) {
-            example = new Vector<Product>();
-            example.add(new Product("Tas Serbaguna Kecil", R.drawable.bagmini, "50.000"));
-            example.add(new Product("Tas Serbaguna Besar", R.drawable.greybag, "70.000"));
-            example.add(new Product("Tas Serbaguna Sedang", R.drawable.bagblack, "120.000"));
-            example.add(new Product("Pouch Wanita Sedang", R.drawable.pouch, "50.000"));
-            example.add(new Product("Tas Pink Mini", R.drawable.pinkmini, "70.000"));
-            example.add(new Product("Tas ToteBag", R.drawable.totebag, "85.000"));
-            example.add(new Product("Tas Totebag fold", R.drawable.totebagorange, "100.000"));
-        }
-        return example;
-    }
-
 }
