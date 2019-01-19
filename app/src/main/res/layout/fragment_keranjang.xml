@@ -23,7 +23,7 @@
         android:layout_below="@+id/rc1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Total Belanja :"/>
+        android:text="Total Belanja : Rp"/>
     <TextView
         android:id="@+id/vtotal"
         android:layout_marginLeft="10dp"
@@ -31,7 +31,7 @@
         android:layout_below="@+id/rc1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Rp"/>
+        android:text="0"/>
     </LinearLayout>
         <Button
             android:id="@+id/btnpsn"

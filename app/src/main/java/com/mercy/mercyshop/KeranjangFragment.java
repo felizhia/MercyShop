@@ -17,9 +17,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 
+import static android.media.CamcorderProfile.get;
+
 public class KeranjangFragment extends Fragment {
     TextView total;
     Button btnpesan;
+    int sub ;
+    String tr;
     public KeranjangFragment() {
     }
 
@@ -44,6 +48,11 @@ public class KeranjangFragment extends Fragment {
         total = krnjg.findViewById(R.id.vtotal);
         btnpesan = krnjg.findViewById(R.id.btnpsn);
 
+        for (int i = 0;i < example.size();i++){
+            sub = Integer.parseInt(String.valueOf(KeranjangFragment.example.get(i)));
+
+        }
+        total.setText(sub);
         btnpesan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

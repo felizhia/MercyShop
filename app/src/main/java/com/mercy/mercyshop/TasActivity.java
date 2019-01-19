@@ -34,6 +34,7 @@ import java.util.Vector;
 public class TasActivity extends AppCompatActivity {
     private TextView tvtitle,tvcategory,tvdesc,tvhrg,nama,hrg;
     private Button btnblnja;
+    private ImageView tvimg;
     private RatingBar rating;
     private SmileRating smile;
 
@@ -52,6 +53,7 @@ public class TasActivity extends AppCompatActivity {
         tvcategory=findViewById(R.id.kategori);
         tvdesc=findViewById(R.id.deskripsi);
         tvhrg = findViewById(R.id.harga);
+        tvimg = findViewById(R.id.tasthumbnail);
         btnblnja = findViewById(R.id.tambahbelanja);
         rating = findViewById(R.id.ratingBar);
         smile = findViewById(R.id.smile_rating);
@@ -64,6 +66,7 @@ public class TasActivity extends AppCompatActivity {
         productImage = intent.getExtras().getInt("Img");
 
         tvtitle.setText(title);
+        tvimg.setImageResource(productImage);
         tvcategory.setText(Category);
         tvdesc.setText(Description);
         tvhrg.setText(price);

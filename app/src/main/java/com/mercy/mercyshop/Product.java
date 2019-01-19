@@ -13,7 +13,8 @@ public class Product {
     public String price;
     public boolean selected;
 
-    public Product(String title, int productImage, String price) {
+    public Product(String title, int productImage, String
+            price) {
         this.title = title;
         this.productImage = productImage;
         this.price = price;
@@ -39,7 +40,7 @@ public class Product {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(String  price) {
         this.price = price;
     }
 }

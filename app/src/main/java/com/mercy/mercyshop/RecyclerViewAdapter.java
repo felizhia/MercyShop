@@ -9,15 +9,22 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Vector;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder> {
     private Context mContext;
     LayoutInflater inflater;
     int positionbundle;
     ArrayList<Tas> mData;
+
+    public List example = new ArrayList<Product>();
+    public String title;
+    public int productImage;
+    public String price;
 
     public RecyclerViewAdapter(Context mContext, ArrayList<Tas> mData) {
         this.mContext = mContext;
@@ -41,7 +48,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(mContext, TasActivity.class);
-                intent.putExtra(ShoppingCartHelper.PRODUCT_INDEX, position);
                 intent.putExtra("Title", mData.get(position).getTitle());
                 intent.putExtra("Category", mData.get(position).getCategory());
                 intent.putExtra("Description", mData.get(position).getDescription());
@@ -50,12 +56,36 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 mContext.startActivity(intent);
             }
         });
+        holder.card.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                KeranjangFragment.example.add(new Product(title,productImage,price));
+                li();
+                notifyDataSetChanged();
+                Toast.makeText(mContext,"Barang "+holder.tv_title.getText()+" di tambahkan ke keranjang",Toast.LENGTH_SHORT).show();
+                return false;
+            }
+        });
+    }
+
+    private void li() {
+        for (int i = 0;i<example.size();i++){
+            example=new Vector<Product>();
+            example.add(new Product("Tas Serbaguna Kecil", R.drawable.bagmini, "50.000"));
+            example.add(new Product("Tas Serbaguna Besar", R.drawable.greybag, "70.000"));
+            example.add(new Product("Tas Serbaguna Sedang", R.drawable.bagblack, "120.000"));
+            example.add(new Product("Pouch Wanita Sedang", R.drawable.pouch, "50.000"));
+            example.add(new Product("Tas Pink Mini", R.drawable.pinkmini, "70.000"));
+            example.add(new Product("Tas ToteBag", R.drawable.totebag, "85.000"));
+            example.add(new Product("Tas Totebag fold", R.drawable.totebagorange, "100.000"));
+        }
     }
 
     @Override
     public int getItemCount() {
         return mData.size();
     }
+
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         TextView tv_title;

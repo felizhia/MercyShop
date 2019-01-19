@@ -15,6 +15,7 @@ import android.widget.BaseAdapter;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,7 +53,10 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
         holder.del.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                notifyItemRemoved(position);
+                mData.remove(holder.getAdapterPosition());
+                mData.remove(holder.hrg.getTextLocale());
+                notifyDataSetChanged();
+                Toast.makeText(mCon,"Barang "+holder.nmPro.getText()+" di hapus dari keranjang",Toast.LENGTH_SHORT).show();
             }
         });
     }
