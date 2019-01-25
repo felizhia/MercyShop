@@ -41,9 +41,9 @@ public class TasLokalFragment extends Fragment {
     }
 
     private void findData() {
-        lsTas.add(new Tas("Tas Serbaguna Kecil","Tas Local","Tas yang serbaguna kecil yang bisa menyimpan berbagai perlengkapan kebutuhan sehari - hari","50.000",R.drawable.bagmini));
-        lsTas.add(new Tas("Tas Serbaguna Besar","Tas Local","Tas yang serbaguna besar yang bisa menyimpan berbagai perlengkapan kebutuhan sehari - hari","70.000",R.drawable.greybag));
-        lsTas.add(new Tas("Tas Serbaguna Sedang","Tas Local","Tas yang serbaguna sedang yang bisa menyimpan berbagai perlengkapan kebutuhan sehari - hari","120.000",R.drawable.bagblack));
+        lsTas.add(new Tas("Tas Serbaguna Kecil","Tas Local","Tas yang serbaguna kecil yang bisa menyimpan berbagai perlengkapan kebutuhan sehari - hari",50000,R.drawable.bagmini));
+        lsTas.add(new Tas("Tas Serbaguna Besar","Tas Local","Tas yang serbaguna besar yang bisa menyimpan berbagai perlengkapan kebutuhan sehari - hari",70000,R.drawable.greybag));
+        lsTas.add(new Tas("Tas Serbaguna Sedang","Tas Local","Tas yang serbaguna sedang yang bisa menyimpan berbagai perlengkapan kebutuhan sehari - hari",120000,R.drawable.bagblack));
 
         mAdapter.notifyDataSetChanged();
     }

@@ -15,9 +15,9 @@ import java.util.List;
 
 public class RefundAdapter extends RecyclerView.Adapter<RefundAdapter.MyViewHolder> {
     private Context mContext;
-    private ArrayList<Refund> mData;
+    private List<Refund> mData;
 
-    public RefundAdapter(Context mContext, ArrayList<Refund> mData) {
+    public RefundAdapter(Context mContext, List<Refund> mData) {
         this.mContext = mContext;
         this.mData = mData;
     }
@@ -32,11 +32,13 @@ public class RefundAdapter extends RecyclerView.Adapter<RefundAdapter.MyViewHold
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, final int position) {
-        holder.tv_title.setText(mData.get(position).getNm());
-        holder.tv_no.setText(mData.get(position).getNo());
-        holder.tv_kode.setText(mData.get(position).getKode());
-        holder.tv_alm.setText(mData.get(position).getAlam());
-        holder.tv_alsn.setText(mData.get(position).getAlas());
+        Refund refund = mData.get(position);
+        holder.rnama.setText(mData.get(position).getNama());
+        holder.rno.setText(mData.get(position).getNo());
+        holder.rkode.setText(mData.get(position).getKode());
+        holder.ralm.setText(mData.get(position).getAlamat());
+        holder.ralsn.setText(mData.get(position).getAlasan());
+        holder.rcard.setEnabled(true);
     }
 
     @Override
@@ -45,21 +47,21 @@ public class RefundAdapter extends RecyclerView.Adapter<RefundAdapter.MyViewHold
     }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView tv_title;
-        TextView tv_no;
-        TextView tv_alm;
-        TextView tv_kode;
-        TextView tv_alsn;
-        CardView card;
+        TextView rnama;
+        TextView rno;
+        TextView ralm;
+        TextView rkode;
+        TextView ralsn;
+        CardView rcard;
 
         public MyViewHolder(View itemView) {
             super(itemView);
-            tv_title = itemView.findViewById(R.id.kmn1);
-            tv_no = itemView.findViewById(R.id.noval);
-            tv_alm=itemView.findViewById(R.id.sno);
-            tv_kode =itemView.findViewById(R.id.kode1);
-            tv_alsn=itemView.findViewById(R.id.valsn);
-            card = itemView.findViewById(R.id.cardrefund);
+            rnama = itemView.findViewById(R.id.namar2);
+            rno = itemView.findViewById(R.id.nor2);
+            ralm=itemView.findViewById(R.id.almtr2);
+            rkode =itemView.findViewById(R.id.koder2);
+            ralsn=itemView.findViewById(R.id.alsnr2);
+            rcard = itemView.findViewById(R.id.refundc);
         }
     }
 }

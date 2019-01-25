@@ -7,29 +7,21 @@ import android.widget.TextView;
  */
 
 public class Refund {
-    private String nm;
+    private String nama;
     private String no;
-    private String alam;
+    private String alamat;
     private String kode;
-    private String alas;
+    private String alasan;
 
     public Refund() {
     }
 
-    public Refund(String nm, String no, String alam, String kode, String alas) {
-        this.nm = nm;
-        this.no = no;
-        this.alam = alam;
-        this.kode = kode;
-        this.alas = alas;
+    public String getNama() {
+        return nama;
     }
 
-    public String getNm() {
-        return nm;
-    }
-
-    public void setNm(String nm) {
-        this.nm = nm;
+    public void setNama(String nama) {
+        this.nama = nama;
     }
 
     public String getNo() {
@@ -40,12 +32,12 @@ public class Refund {
         this.no = no;
     }
 
-    public String getAlam() {
-        return alam;
+    public String getAlamat() {
+        return alamat;
     }
 
-    public void setAlam(String alam) {
-        this.alam = alam;
+    public void setAlamat(String alamat) {
+        this.alamat = alamat;
     }
 
     public String getKode() {
@@ -56,11 +48,11 @@ public class Refund {
         this.kode = kode;
     }
 
-    public String getAlas() {
-        return alas;
+    public String getAlasan() {
+        return alasan;
     }
 
-    public void setAlas(String alas) {
-        this.alas = alas;
+    public void setAlasan(String alasan) {
+        this.alasan = alasan;
     }
 }

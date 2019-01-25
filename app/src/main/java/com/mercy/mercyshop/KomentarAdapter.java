@@ -1,14 +1,24 @@
 package com.mercy.mercyshop;
 
+import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.VolleyLog;
+import com.android.volley.toolbox.JsonObjectRequest;
+
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,19 +42,10 @@ public class KomentarAdapter extends RecyclerView.Adapter<KomentarAdapter.MyView
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, final int position) {
+        Komen komen = mData.get(position);
         holder.tv_title.setText(mData.get(position).getNama());
         holder.tv_komen.setText(mData.get(position).getKomen());
-        holder.card.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent mintent = new Intent(mContext, KomentarFragment.class);
-                mintent.putExtra("Nama",mData.get(position).getNama());
-                mintent.putExtra("komen",mData.get(position).getKomen());
-                mContext.startActivity(mintent);
-            }
-        });
-
-
+        holder.card.setEnabled(true);
     }
 
     @Override
@@ -64,4 +65,5 @@ public class KomentarAdapter extends RecyclerView.Adapter<KomentarAdapter.MyView
             card = itemView.findViewById(R.id.cardkomen);
         }
     }
+
 }

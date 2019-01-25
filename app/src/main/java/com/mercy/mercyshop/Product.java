@@ -10,10 +10,10 @@ import android.widget.ImageView;
 public class Product {
     public String title;
     public int productImage;
-    public String price;
+    public double price;
     public boolean selected;
 
-    public Product(String title, int productImage, String
+    public Product(String title, int productImage, double
             price) {
         this.title = title;
         this.productImage = productImage;
@@ -36,11 +36,11 @@ public class Product {
         this.productImage = productImage;
     }
 
-    public String getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(String  price) {
+    public void setPrice(double  price) {
         this.price = price;
     }
 }

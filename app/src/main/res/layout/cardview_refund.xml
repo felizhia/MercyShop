@@ -2,11 +2,12 @@
 <android.support.v7.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:id="@+id/cardrefund"
+    android:id="@+id/refundc"
+    android:layout_marginTop="100dp"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    app:cardCornerRadius="4dp">
+    app:cardCornerRadius="10dp">
 
     <RelativeLayout
         android:background="@color/colorText"
@@ -25,114 +26,118 @@
             android:textStyle="bold"
             android:id="@+id/status1" />
         <TextView
-            android:paddingTop="10dp"
-            android:layout_width="80dp"
+            android:paddingTop="5dp"
+            android:layout_width="90dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/status1"
             android:layout_marginLeft="15dp"
+            android:paddingBottom="10dp"
             android:text="Nama :"
             android:textSize="20sp"
             android:textStyle="bold"
-            android:id="@+id/nm2" />
+            android:id="@+id/namar" />
 
         <TextView
-            android:id="@+id/kmn1"
+            android:id="@+id/namar2"
+            android:paddingBottom="15dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/status1"
-            android:layout_toRightOf="@+id/nm2"
-            android:paddingTop="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="6dp"
+            android:layout_toRightOf="@+id/namar"
+            android:paddingTop="5dp"
+            android:layout_marginLeft="5dp"
             android:text="Verisyaa Mangala"
             android:textSize="15sp"
             android:textStyle="bold" />
         <TextView
-            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
             android:layout_width="90dp"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/nm2"
+            android:layout_below="@+id/namar"
             android:layout_marginLeft="15dp"
             android:text="No Telp :"
             android:textSize="20sp"
             android:textStyle="bold"
-            android:id="@+id/no2" />
+            android:id="@+id/nor" />
 
         <TextView
-            android:id="@+id/noval"
+            android:id="@+id/nor2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/kmn1"
-            android:layout_toEndOf="@+id/nm2"
-            android:paddingTop="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="5dp"
+            android:layout_below="@id/namar2"
+            android:layout_toEndOf="@+id/namar"
+            android:paddingBottom="15dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="1dp"
             android:text="08166277365"
             android:textSize="15sp"
             android:textStyle="bold" />
         <TextView
-            android:paddingTop="10dp"
+            android:paddingBottom="20dp"
             android:layout_width="90dp"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/no2"
+            android:layout_below="@+id/nor"
             android:layout_marginLeft="15dp"
             android:text="Alamat :"
             android:textSize="20sp"
             android:textStyle="bold"
-            android:id="@+id/almt" />
+            android:id="@+id/almtr" />
 
         <TextView
-            android:id="@+id/sno"
+            android:id="@+id/almtr2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/noval"
-            android:layout_toEndOf="@+id/nm2"
-            android:paddingTop="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="7dp"
+            android:layout_below="@+id/nor2"
+            android:layout_toEndOf="@+id/nor"
+            android:paddingBottom="10dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="1dp"
             android:text="Jl. Kalasan Indah Permai RT 007 / RW002, Bandung, Jawa Barat"
             android:textSize="15sp"
             android:textStyle="bold" />
         <TextView
-            android:paddingTop="15dp"
+            android:paddingBottom="10dp"
             android:layout_width="90dp"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/almt"
+            android:layout_below="@+id/almtr"
             android:layout_marginLeft="15dp"
             android:text="Kode Barang :"
             android:textSize="20sp"
             android:textStyle="bold"
-            android:id="@+id/kode" />
+            android:id="@+id/koder" />
 
         <TextView
-            android:id="@+id/kode1"
+            android:id="@+id/koder2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/sno"
-            android:layout_toRightOf="@+id/kode"
+            android:layout_below="@+id/almtr2"
+            android:layout_toRightOf="@+id/koder"
             android:paddingTop="10dp"
-            android:layout_marginTop="35dp"
+            android:layout_marginTop="19dp"
+            android:layout_marginLeft="5dp"
             android:text="BG-6472"
+            android:paddingBottom="10dp"
             android:textSize="15sp"
             android:textStyle="bold" />
         <TextView
             android:paddingTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/kode"
+            android:layout_below="@+id/koder"
             android:layout_marginLeft="15dp"
             android:text="Alasan Pengembalian :"
             android:textSize="20sp"
             android:textStyle="bold"
-            android:id="@+id/alsn" />
+            android:id="@+id/alsnr" />
 
         <TextView
-            android:id="@+id/valsn"
+            android:id="@+id/alsnr2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/alsn"
+            android:layout_below="@+id/alsnr"
             android:layout_marginLeft="15dp"
             android:paddingTop="10dp"
+            android:layout_marginBottom="15dp"
             android:text="Tas tidak ada talinya dan ada cacat di bagian belakang tas"
             android:textSize="15sp"
             android:textStyle="bold" />

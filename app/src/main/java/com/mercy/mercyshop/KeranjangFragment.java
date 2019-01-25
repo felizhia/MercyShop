@@ -13,8 +13,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Vector;
 
 import static android.media.CamcorderProfile.get;
@@ -22,12 +24,12 @@ import static android.media.CamcorderProfile.get;
 public class KeranjangFragment extends Fragment {
     TextView total;
     Button btnpesan;
-    int sub ;
+    double sub = 0 ;
     String tr;
     public KeranjangFragment() {
     }
 
-    public static List example = new ArrayList<Product>();
+    public static List<Product> example = new ArrayList<>();
     ProductAdapter madapter;
 
     @Nullable
@@ -49,10 +51,17 @@ public class KeranjangFragment extends Fragment {
         btnpesan = krnjg.findViewById(R.id.btnpsn);
 
         for (int i = 0;i < example.size();i++){
-            sub = Integer.parseInt(String.valueOf(KeranjangFragment.example.get(i)));
+            sub = sub + example.get(i).getPrice();
 
         }
-        total.setText(sub);
+        for (int i = 1; i<example.size();i--){
+
+            sub -= example.get(i).getPrice();
+        }
+        Locale locale = new Locale("in","ID");
+
+        NumberFormat formatrupiah = NumberFormat.getCurrencyInstance(locale);
+        total.setText(formatrupiah.format(sub));
         btnpesan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

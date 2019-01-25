@@ -4,26 +4,26 @@
     android:layout_width="match_parent"
     android:id="@+id/cardkomen"
     android:layout_height="wrap_content"
+    app:cardBackgroundColor="@color/cardview_dark_background"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:paddingTop="20dp"
-    android:backgroundTint="@color/cardview_shadow_end_color"
-    android:backgroundTintMode="src_in"
+    android:paddingBottom="10dp"
     android:orientation="vertical"
-    app:cardCornerRadius="4dp">
+    app:cardCornerRadius="10dp">
 
     <RelativeLayout
         android:background="@color/colorText"
         android:paddingTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="4dp"
-        android:backgroundTint="@android:color/holo_blue_light">
+        android:layout_margin="4dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
             android:text="Nama"
+            android:layout_centerHorizontal="true"
             android:textSize="20sp"
             android:textStyle="bold"
             android:id="@+id/nm2" />
@@ -33,7 +33,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/nm2"
-            android:layout_marginLeft="15dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:textAlignment="gravity"
             android:layout_marginTop="10dp"
             android:text="Komentar"
             android:textSize="20sp"

@@ -25,9 +25,11 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.net.URL;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Vector;
 
@@ -41,7 +43,7 @@ public class TasActivity extends AppCompatActivity {
     public static List example = new ArrayList<Product>();
     public String title;
     public int productImage;
-    public String price;
+    public double price;
 
 
     @Override
@@ -49,6 +51,9 @@ public class TasActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tas);
 
+        Locale locale = new Locale("in","ID");
+
+        NumberFormat formatrupiah = NumberFormat.getCurrencyInstance(locale);
         tvtitle=findViewById(R.id.judultas);
         tvcategory=findViewById(R.id.kategori);
         tvdesc=findViewById(R.id.deskripsi);
@@ -62,14 +67,14 @@ public class TasActivity extends AppCompatActivity {
         title = intent.getExtras().getString("Title");
         String Category = intent.getExtras().getString("Category");
         String Description = intent.getExtras().getString("Description");
-        price = intent.getExtras().getString("Harga");
+        price = intent.getExtras().getDouble("Harga");
         productImage = intent.getExtras().getInt("Img");
 
         tvtitle.setText(title);
         tvimg.setImageResource(productImage);
         tvcategory.setText(Category);
         tvdesc.setText(Description);
-        tvhrg.setText(price);
+        tvhrg.setText(formatrupiah.format(price));
 
         btnblnja.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -8,7 +8,10 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +19,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -34,158 +40,76 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
+
+
 
 /**
  * Created by Mizuka Anamato on 27/08/2018.
  */
 
 public class PengembalianFragment extends Fragment {
-    public  static String urlString ="";
-    private View v;
-
-    RecyclerView lala;
-    JsonArrayRequest jsonArrayRequest;
-    ArrayList<Refund> li = new ArrayList<>();
-    RefundAdapter mAdapter;
-    RequestQueue requestQueue;
-
-    public PengembalianFragment() {
-    }
+    List<Refund> ref = new ArrayList<>();
+    private String link ="http://192.168.1.6/android_register_login/hrefund.php";
+    RefundAdapter Adapter;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View pgmb = inflater.inflate(R.layout.fragment_pengembalian, container, false);
 
-        Intent intent = getActivity().getIntent();
-        String extraname = intent.getStringExtra("nama");
-        String extrano = intent.getStringExtra("no");
-        String extraalamat = intent.getStringExtra("alamat");
-        String extrakode = intent.getStringExtra("kode");
-        String extraalasan = intent.getStringExtra("alasan");
-        TextView name = pgmb.findViewById(R.id.kmn1);
-        TextView no = pgmb.findViewById(R.id.noval);
-        TextView alamat = pgmb.findViewById(R.id.sno);
-        TextView kode = pgmb.findViewById(R.id.kode1);
-        TextView alasan = pgmb.findViewById(R.id.valsn);
-        name.setText(extraname);
-        no.setText(extrano);
-        alamat.setText(extraalamat);
-        kode.setText(extrakode);
-        alasan.setText(extraalasan);
+        RecyclerView last =pgmb.findViewById(R.id.href);
+        LinearLayoutManager lref = new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false);
+        Adapter = new RefundAdapter(getContext(),ref);
+        last.setLayoutManager(lref);
+        last.setAdapter(Adapter);
+        data();
 
-        new AsyncFetch().execute();
         return pgmb;
+    }
+
+    private void data() {
+        final ProgressDialog pDial = new ProgressDialog(getActivity());
+        pDial.setMessage("Loading...");
+        pDial.show();
+
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(link, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+                for (int i = 0; i < response.length(); i++) {
+                    try {
+                        JSONObject jsonObject = response.getJSONObject(i);
+
+                        Refund refund = new Refund();
+                        refund.setNama(jsonObject.getString("nama"));
+                        refund.setNo(jsonObject.getString("no"));
+                        refund.setAlamat(jsonObject.getString("alamat"));
+                        refund.setKode(jsonObject.getString("kode"));
+                        refund.setAlasan(jsonObject.getString("alasan"));
+                        ref.add(refund);
+                        Adapter.notifyDataSetChanged();
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                        pDial.dismiss();
+                    }
+                }
+                Adapter.notifyDataSetChanged();
+                pDial.dismiss();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e("Volley",error.toString());
+                pDial.dismiss();
+            }
+        });
+
+        RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
+        requestQueue.add(jsonArrayRequest);
     }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-    }
-
-    private class AsyncFetch extends AsyncTask<String, String, String> {
-
-        ProgressDialog pDialog = new ProgressDialog(getActivity());
-        HttpURLConnection conn;
-        URL url = null;
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-
-            pDialog.setMessage("Loading list ...");
-            pDialog.setCancelable(false);
-            pDialog.show();
-        }
-
-        @Override
-        protected String doInBackground(String... strings) {
-            try {
-
-                // Enter URL address where your json file resides
-                // Even you can make call to php file which returns json data
-                url = new URL("http://surveyclickon.000webhostapp.com/android_register_login/back.php");
-
-            } catch (MalformedURLException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-                return e.toString();
-            }
-            try {
-
-                // Setup HttpURLConnection class to send and receive data from php and mysql
-                conn = (HttpURLConnection) url.openConnection();
-                conn.setRequestMethod("POST");
-
-                // setDoOutput to true as we recieve data from json file
-                conn.setDoOutput(true);
-
-            } catch (IOException e1) {
-                // TODO Auto-generated catch block
-                e1.printStackTrace();
-                return e1.toString();
-            }
-            try {
-
-                int response_code = conn.getResponseCode();
-
-                // Check if successful connection made
-                if (response_code == HttpURLConnection.HTTP_OK) {
-
-                    // Read data sent from server
-                    InputStream input = conn.getInputStream();
-                    BufferedReader reader = new BufferedReader(new InputStreamReader(input));
-                    StringBuilder result = new StringBuilder();
-                    String line;
-
-                    while ((line = reader.readLine()) != null) {
-                        result.append(line);
-                    }
-
-                    // Pass data to onPostExecute method
-                    return (result.toString());
-
-                } else {
-
-                    return ("unsuccessful");
-                }
-
-            } catch (IOException e) {
-                e.printStackTrace();
-                return e.toString();
-            } finally {
-                conn.disconnect();
-            }
-        }
-
-        @Override
-        protected void onPostExecute(String result) {
-            pDialog.dismiss();
-
-            try{
-                JSONObject object = new JSONObject(result);
-                int code = object.getInt("refund");
-                if(code == 0) {
-                    JSONArray jsonArray = object.getJSONArray("refund");
-                    ArrayList<Refund> ref = new ArrayList<>();
-                    for (int i = 0; i < jsonArray.length(); i++) {
-                        JSONObject jsonObject = jsonArray.getJSONObject(i);
-                        Refund refund = new Refund();
-                        refund.setNm(jsonObject.getString("nama"));
-                        refund.setNo(jsonObject.getString("no"));
-                        refund.setAlam(jsonObject.getString("alamat"));
-                        refund.setKode(jsonObject.getString("kode"));
-                        refund.setAlas(jsonObject.getString("alasan"));
-                        ref.add(refund);
-                    }
-                }
-            }catch (JSONException e) {
-
-                e.printStackTrace();
-                Toast.makeText(getActivity(), "Json error: " + e.getMessage(), Toast.LENGTH_LONG).show();
-            }
-
-        }
     }
 }

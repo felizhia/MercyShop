@@ -44,9 +44,9 @@ public class TasImportFragment extends Fragment {
     }
 
     private void findData() {
-        lsTas.add(new Tas("Tas Pink Mini","Tas Import","Tas Import pink mini yang bisa menyimpan berbagai perlengkapan Kosmetik maupun lainnya","70.000",R.drawable.pinkmini));
-        lsTas.add(new Tas("Tas ToteBag","Tas Import","Tas Import Totebag yang bisa menyimpan berbagai perlengkapan kebutuhan kampus para remaja ","85.000",R.drawable.totebag));
-        lsTas.add(new Tas("Tas Totebag fold","Tas Import","Tas Import Fold Totebag yang bisa menyimpan berbagai perlengkapan kebutuhan kampus para remaja","100.000",R.drawable.totebagorange));
+        lsTas.add(new Tas("Tas Pink Mini","Tas Import","Tas Import pink mini yang bisa menyimpan berbagai perlengkapan Kosmetik maupun lainnya",70000,R.drawable.pinkmini));
+        lsTas.add(new Tas("Tas ToteBag","Tas Import","Tas Import Totebag yang bisa menyimpan berbagai perlengkapan kebutuhan kampus para remaja ",85000,R.drawable.totebag));
+        lsTas.add(new Tas("Tas Totebag fold","Tas Import","Tas Import Fold Totebag yang bisa menyimpan berbagai perlengkapan kebutuhan kampus para remaja",100000,R.drawable.totebagorange));
 
         mAdapter.notifyDataSetChanged();
     }

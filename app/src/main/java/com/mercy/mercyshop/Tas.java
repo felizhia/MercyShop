@@ -7,14 +7,14 @@ public class Tas {
     private String Title;
     private String Category;
     private String Description;
-    private String Harga;
+    private double Harga;
     public int Img;
     public boolean selected;
 
     public Tas() {
     }
 
-    public Tas(String title, String category, String description, String harga, int img) {
+    public Tas(String title, String category, String description, double harga, int img) {
         Title = title;
         Category = category;
         Description = description;
@@ -46,11 +46,11 @@ public class Tas {
         Description = description;
     }
 
-    public String getHarga() {
+    public double getHarga() {
         return Harga;
     }
 
-    public void setHarga(String harga) {
+    public void setHarga(double harga) {
         Harga = harga;
     }
 

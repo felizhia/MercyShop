@@ -11,8 +11,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Vector;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder> {
@@ -21,10 +23,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     int positionbundle;
     ArrayList<Tas> mData;
 
-    public List example = new ArrayList<Product>();
+    public List<Product> example = new ArrayList<>();
     public String title;
     public int productImage;
-    public String price;
+    public double price;
 
     public RecyclerViewAdapter(Context mContext, ArrayList<Tas> mData) {
         this.mContext = mContext;
@@ -71,13 +73,13 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     private void li() {
         for (int i = 0;i<example.size();i++){
             example=new Vector<Product>();
-            example.add(new Product("Tas Serbaguna Kecil", R.drawable.bagmini, "50.000"));
-            example.add(new Product("Tas Serbaguna Besar", R.drawable.greybag, "70.000"));
-            example.add(new Product("Tas Serbaguna Sedang", R.drawable.bagblack, "120.000"));
-            example.add(new Product("Pouch Wanita Sedang", R.drawable.pouch, "50.000"));
-            example.add(new Product("Tas Pink Mini", R.drawable.pinkmini, "70.000"));
-            example.add(new Product("Tas ToteBag", R.drawable.totebag, "85.000"));
-            example.add(new Product("Tas Totebag fold", R.drawable.totebagorange, "100.000"));
+            example.add(new Product("Tas Serbaguna Kecil", R.drawable.bagmini, 50000));
+            example.add(new Product("Tas Serbaguna Besar", R.drawable.greybag, 70000));
+            example.add(new Product("Tas Serbaguna Sedang", R.drawable.bagblack, 120000));
+            example.add(new Product("Pouch Wanita Sedang", R.drawable.pouch, 50000));
+            example.add(new Product("Tas Pink Mini", R.drawable.pinkmini, 70000));
+            example.add(new Product("Tas ToteBag", R.drawable.totebag, 85000));
+            example.add(new Product("Tas Totebag fold", R.drawable.totebagorange, 100000));
         }
     }
 
