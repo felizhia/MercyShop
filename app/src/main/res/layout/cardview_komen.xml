@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:id="@+id/cardkomen"
     android:layout_height="wrap_content"
-    app:cardBackgroundColor="@color/cardview_dark_background"
+    app:cardBackgroundColor="@color/colorAccent3"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:paddingTop="20dp"
     android:paddingBottom="10dp"

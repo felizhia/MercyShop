@@ -17,6 +17,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.JsonParseException;
+
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -33,6 +35,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
     private Context mCon;
     List<Product> mData;
     LayoutInflater mla;
+    public List<Product> ex = new ArrayList<>();
 
     public ProductAdapter(Context mCon, List<Product> mData, LayoutInflater mla) {
         this.mCon = mCon;
@@ -63,10 +66,14 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
             public void onClick(View view) {
                 mData.remove(holder.getAdapterPosition());
                 double sub = 0;
-                for (int i = 1; i<example.size();i++){
+                for (int i = 0;i < mData.size();i++){
+                    sub = sub - mData.get(i).getPrice();
 
-                    sub -= example.get(i).getPrice();
                 }
+                Locale locale = new Locale("in","ID");
+                NumberFormat formatrupiah = NumberFormat.getCurrencyInstance(locale);
+                mData.get(Integer.parseInt(formatrupiah.format(sub)));
+                //holder.vt.setText(formatrupiah.format(sub));
                 notifyDataSetChanged();
                 Toast.makeText(mCon,"Barang "+holder.nmPro.getText()+" di hapus dari keranjang",Toast.LENGTH_SHORT).show();
             }
@@ -91,8 +98,8 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
             nmPro = itemView.findViewById(R.id.barang);
             imge = itemView.findViewById(R.id.pict);
             hrg = itemView.findViewById(R.id.hrga);
+            vt=itemView.findViewById(R.id.vtotal);
             cd = itemView.findViewById(R.id.cardker);
-            vt = itemView.findViewById(R.id.vtotal);
             del = itemView.findViewById(R.id.del);
         }
 

@@ -54,10 +54,6 @@ public class KeranjangFragment extends Fragment {
             sub = sub + example.get(i).getPrice();
 
         }
-        for (int i = 1; i<example.size();i--){
-
-            sub -= example.get(i).getPrice();
-        }
         Locale locale = new Locale("in","ID");
 
         NumberFormat formatrupiah = NumberFormat.getCurrencyInstance(locale);
