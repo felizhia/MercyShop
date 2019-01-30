@@ -8,6 +8,7 @@ import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,12 +36,13 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
     private Context mCon;
     List<Product> mData;
     LayoutInflater mla;
-    public List<Product> ex = new ArrayList<>();
+    TextView tvTotal;
 
-    public ProductAdapter(Context mCon, List<Product> mData, LayoutInflater mla) {
+    public ProductAdapter(Context mCon, List<Product> mData, LayoutInflater mla, TextView total) {
         this.mCon = mCon;
         this.mData = mData;
         this.mla = mla;
+        this.tvTotal = total;
     }
 
     @NonNull
@@ -56,7 +58,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
     public void onBindViewHolder(@NonNull final MyViewHolder holder, final int position) {
         Locale locale = new Locale("in","ID");
 
-        NumberFormat formatrupiah = NumberFormat.getCurrencyInstance(locale);
+        final NumberFormat formatrupiah = NumberFormat.getCurrencyInstance(locale);
         holder.nmPro.setText(mData.get(position).getTitle());
         holder.imge.setImageResource(mData.get(position).getProductImage());
         holder.hrg.setText(formatrupiah.format(mData.get(position).getPrice()));
@@ -65,19 +67,19 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
             @Override
             public void onClick(View view) {
                 mData.remove(holder.getAdapterPosition());
-                double sub = 0;
-                for (int i = 0;i < mData.size();i++){
-                    sub = sub - mData.get(i).getPrice();
-
-                }
-                Locale locale = new Locale("in","ID");
-                NumberFormat formatrupiah = NumberFormat.getCurrencyInstance(locale);
-                mData.get(Integer.parseInt(formatrupiah.format(sub)));
-                //holder.vt.setText(formatrupiah.format(sub));
                 notifyDataSetChanged();
+                tvTotal.setText(formatrupiah.format(getTotalPrice()));
                 Toast.makeText(mCon,"Barang "+holder.nmPro.getText()+" di hapus dari keranjang",Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    public double getTotalPrice() {
+        double totalPrice = 0;
+        for (int i = 0; i < mData.size(); ++i) {
+            totalPrice = totalPrice + mData.get(i).getPrice();
+        }
+        return totalPrice;
     }
 
     @Override
@@ -90,7 +92,6 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
         ImageView imge;
         TextView hrg;
         CardView cd;
-        TextView vt;
         ImageView del;
 
         public MyViewHolder(View itemView) {
@@ -98,7 +99,6 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
             nmPro = itemView.findViewById(R.id.barang);
             imge = itemView.findViewById(R.id.pict);
             hrg = itemView.findViewById(R.id.hrga);
-            vt=itemView.findViewById(R.id.vtotal);
             cd = itemView.findViewById(R.id.cardker);
             del = itemView.findViewById(R.id.del);
         }

@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,7 +25,6 @@ import static android.media.CamcorderProfile.get;
 public class KeranjangFragment extends Fragment {
     TextView total;
     Button btnpesan;
-    double sub = 0 ;
     String tr;
     public KeranjangFragment() {
     }
@@ -42,22 +42,15 @@ public class KeranjangFragment extends Fragment {
         LinearLayoutManager aw1 =new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false);
         rec.setLayoutManager(aw1);
 
-
-        madapter = new ProductAdapter(getContext(), example, getLayoutInflater());
-        rec.setAdapter(madapter);
-        madapter.notifyDataSetChanged();
-
         total = krnjg.findViewById(R.id.vtotal);
+        madapter = new ProductAdapter(getContext(), example, getLayoutInflater(), total);
+        rec.setAdapter(madapter);
+
         btnpesan = krnjg.findViewById(R.id.btnpsn);
-
-        for (int i = 0;i < example.size();i++){
-            sub = sub + example.get(i).getPrice();
-
-        }
         Locale locale = new Locale("in","ID");
 
         NumberFormat formatrupiah = NumberFormat.getCurrencyInstance(locale);
-        total.setText(formatrupiah.format(sub));
+        total.setText(formatrupiah.format(madapter.getTotalPrice()));
         btnpesan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
