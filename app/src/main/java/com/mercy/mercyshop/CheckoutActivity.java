@@ -29,6 +29,9 @@ public class CheckoutActivity extends AppCompatActivity {
     private EditText nama,no,alamat,jne;
     private ProgressBar pro;
     private Button btncheck;
+    public String title;
+    public int productImage;
+    public double price;
     private static String URL_CHECK="http://192.168.1.2/android_register_login/check.php";
 
     @Override
@@ -59,11 +62,7 @@ public class CheckoutActivity extends AppCompatActivity {
                 intent.putExtra("no", mno);
                 intent.putExtra("alamat", malamat);
                 intent.putExtra("jne", mjne);
-                Intent intent1 = new Intent(CheckoutActivity.this, PesananFragment.class);
-                intent1.putExtra("nama", mnama);
-                intent1.putExtra("no", mno);
-                intent1.putExtra("alamat", malamat);
-                intent1.putExtra("jne", mjne);
+
                 startActivity(intent);
 
             }

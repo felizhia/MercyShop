@@ -13,6 +13,10 @@ public class Product {
     public double price;
     public boolean selected;
 
+    public Product() {
+
+    }
+
     public Product(String title, int productImage, double
             price) {
         this.title = title;

@@ -1,159 +1,146 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.mercy.mercyshop.PesananActivity">
+    android:layout_height="match_parent">
 
-    <android.support.v4.widget.NestedScrollView
+    <TextView
+        android:id="@+id/thx1"
+        android:text="Data Pesanan"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="45dp"
+        android:textAlignment="center"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/pesanan1"
+        android:text="Pesanan Anda :"
+        android:textStyle="bold"
+        android:textSize="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_below="@+id/thx1"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content" />
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_below="@+id/pesanan1"
+        android:id="@+id/recheck1"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <RelativeLayout
-            android:background="@color/colorText"
-            android:paddingTop="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="4dp">
-
-            <TextView
-                android:id="@+id/jdladmin"
-                android:text="Data Pesanan "
-                android:textStyle="bold"
-                android:textSize="20dp"
-                android:textAlignment="center"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-            <android.support.v7.widget.RecyclerView
-                android:layout_below="@+id/jdladmin"
-                android:id="@+id/recheck1"
-                android:layout_width="match_parent"
-                android:layout_height="130dp"
-                android:layout_marginTop="5dp">
+        android:layout_height="150dp"
+        android:layout_marginTop="5dp">
 
 
-            </android.support.v7.widget.RecyclerView>
-            <TextView
-                android:id="@+id/diri1"
-                android:text="Pengiriman Barang Ke :"
-                android:textStyle="bold"
-                android:textSize="15dp"
-                android:layout_marginTop="140dp"
-                android:layout_marginLeft="10dp"
-                android:layout_below="@+id/jdladmin"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content" />
-            <TextView
-                android:id="@+id/adminnama"
-                android:text="Nama :"
-                android:textStyle="bold"
-                android:textSize="16dp"
-                android:layout_marginLeft="94dp"
-                android:layout_below="@+id/diri1"
-                android:layout_width="60dp"
-                android:layout_height="wrap_content" />
-            <TextView
-                android:id="@+id/vnm"
-                android:text="Cintia Hapsari"
-                android:textStyle="bold"
-                android:layout_toRightOf="@+id/adminnama"
-                android:textSize="16dp"
-                android:layout_marginLeft="10dp"
-                android:layout_below="@+id/diri1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+    </android.support.v7.widget.RecyclerView>
+    <TextView
+        android:id="@+id/diri1"
+        android:text="Pengiriman Barang Ke :"
+        android:textStyle="bold"
+        android:textSize="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_below="@+id/recheck1"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/nm12"
+        android:text="Nama :"
+        android:textStyle="bold"
+        android:textSize="16dp"
+        android:layout_marginLeft="70dp"
+        android:layout_below="@+id/diri1"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/vnm1"
+        android:text="Cintia Hapsari"
+        android:textStyle="bold"
+        android:layout_toRightOf="@+id/nm12"
+        android:textSize="16dp"
+        android:layout_marginLeft="10dp"
+        android:layout_below="@+id/diri1"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content" />
 
-            <TextView
-                android:id="@+id/no1"
-                android:text="No :"
-                android:textStyle="bold"
-                android:textSize="16dp"
-                android:layout_marginLeft="118dp"
-                android:layout_below="@+id/adminnama"
-                android:layout_width="36dp"
-                android:layout_height="wrap_content" />
-            <TextView
-                android:id="@+id/vno"
-                android:text="08266432754"
-                android:textStyle="bold"
-                android:layout_toRightOf="@+id/no1"
-                android:textSize="16dp"
-                android:layout_marginLeft="10dp"
-                android:layout_below="@+id/vnm"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/no12"
+        android:text="No :"
+        android:textStyle="bold"
+        android:textSize="16dp"
+        android:layout_marginLeft="70dp"
+        android:layout_below="@+id/nm12"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/vno1"
+        android:text="08266432754"
+        android:textStyle="bold"
+        android:layout_toRightOf="@+id/no12"
+        android:textSize="16dp"
+        android:layout_marginLeft="10dp"
+        android:layout_below="@+id/vnm1"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content" />
 
-            <TextView
-                android:id="@+id/alm1"
-                android:text="Alamat :"
-                android:textStyle="bold"
-                android:textSize="16dp"
-                android:layout_marginLeft="84dp"
-                android:layout_below="@+id/no1"
-                android:layout_width="70dp"
-                android:layout_height="wrap_content" />
-            <TextView
-                android:id="@+id/valm"
-                android:text="Jl. Kalasan Indah Permai RT 007 / RW002, Bandung, Jawa Barat"
-                android:textStyle="bold"
-                android:layout_toRightOf="@+id/alm1"
-                android:textSize="16dp"
-                android:layout_marginLeft="10dp"
-                android:layout_below="@+id/vno"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-            <TextView
-                android:id="@+id/js1"
-                android:text="JNE -"
-                android:textStyle="bold"
-                android:textSize="16dp"
-                android:layout_marginTop="45dp"
-                android:layout_marginLeft="105dp"
-                android:layout_below="@+id/alm1"
-                android:layout_width="50dp"
-                android:layout_height="wrap_content" />
-            <TextView
-                android:id="@+id/vjs"
-                android:text="YES"
-                android:textStyle="bold"
-                android:layout_toRightOf="@+id/js1"
-                android:layout_marginTop="10dp"
-                android:textSize="16dp"
-                android:layout_below="@+id/valm"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/alm12"
+        android:text="Alamat :"
+        android:textStyle="bold"
+        android:textSize="16dp"
+        android:layout_marginLeft="70dp"
+        android:layout_below="@+id/no12"
+        android:layout_width="60dp"
+        android:layout_height="85dp" />
+    <TextView
+        android:id="@+id/valm1"
+        android:text="Jl. Kalasan Indah Permai RT 007 / RW002, Bandung, Jawa Barat"
+        android:textStyle="bold"
+        android:layout_toRightOf="@+id/alm12"
+        android:textSize="16dp"
+        android:layout_marginLeft="10dp"
+        android:layout_below="@+id/vno1"
+        android:layout_width="match_parent"
+        android:layout_height="85dp" />
+    <TextView
+        android:id="@+id/js12"
+        android:text="JNE :"
+        android:textStyle="bold"
+        android:textSize="16dp"
+        android:layout_marginLeft="70dp"
+        android:layout_below="@+id/alm12"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/vjs1"
+        android:text="YES"
+        android:textStyle="bold"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/js12"
+        android:textSize="16dp"
+        android:layout_below="@+id/valm1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
-            <TextView
-                android:id="@+id/ttl"
-                android:text="Total Belanja :"
-                android:textStyle="bold"
-                android:textSize="16dp"
-                android:layout_marginLeft="38dp"
-                android:layout_below="@+id/js1"
-                android:layout_width="117dp"
-                android:layout_height="wrap_content" />
-            <TextView
-                android:id="@+id/vttl"
-                android:text="Rp. 200.000"
-                android:textStyle="bold"
-                android:layout_toRightOf="@+id/ttl"
-                android:textSize="16dp"
-                android:layout_below="@+id/vjs"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-            <Button
-                android:id="@+id/blnj"
-                android:layout_width="300dp"
-                android:text="Proses Transaksi"
-                android:textStyle="bold"
-                android:textColor="@color/colorText"
-                android:layout_marginLeft="45dp"
-                android:background="@color/colorPrimary1"
-                android:layout_height="40dp"
-                android:layout_marginTop="20dp"
-                android:layout_below="@+id/vttl"/>
-        </RelativeLayout>
-    </android.support.v4.widget.NestedScrollView>
-</LinearLayout>
+    <TextView
+        android:id="@+id/ttl1"
+        android:text="Total Belanja :"
+        android:textStyle="bold"
+        android:textSize="16dp"
+        android:layout_marginLeft="20dp"
+        android:layout_below="@+id/js12"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/vttl"
+        android:text="Rp. 200.000"
+        android:layout_marginLeft="10dp"
+        android:textStyle="bold"
+        android:layout_toRightOf="@+id/ttl1"
+        android:textSize="16dp"
+        android:layout_below="@+id/vjs1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</RelativeLayout>

@@ -82,6 +82,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
         return totalPrice;
     }
 
+
     @Override
     public int getItemCount() {
         return mData.size();

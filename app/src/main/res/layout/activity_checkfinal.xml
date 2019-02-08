@@ -3,8 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.mercy.mercyshop.CheckfinalActivity">
+    android:layout_height="match_parent">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -97,7 +96,7 @@
             android:layout_marginLeft="84dp"
             android:layout_below="@+id/no1"
             android:layout_width="70dp"
-            android:layout_height="wrap_content" />
+            android:layout_height="65dp" />
         <TextView
             android:id="@+id/valm"
             android:text="Jl. Kalasan Indah Permai RT 007 / RW002, Bandung, Jawa Barat"
@@ -107,13 +106,12 @@
             android:layout_marginLeft="10dp"
             android:layout_below="@+id/vno"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="65dp" />
         <TextView
             android:id="@+id/js1"
             android:text="JNE -"
             android:textStyle="bold"
             android:textSize="16dp"
-            android:layout_marginTop="45dp"
             android:layout_marginLeft="105dp"
             android:layout_below="@+id/alm1"
             android:layout_width="50dp"
@@ -123,7 +121,6 @@
             android:text="YES"
             android:textStyle="bold"
             android:layout_toRightOf="@+id/js1"
-            android:layout_marginTop="7dp"
             android:textSize="16dp"
             android:layout_below="@+id/valm"
             android:layout_width="match_parent"

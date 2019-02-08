@@ -35,13 +35,7 @@ public class PesananAdapter extends RecyclerView.Adapter<PesananAdapter.MyViewHo
         holder.card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(mContext,PesananActivity.class);
-                intent.putExtra("nm3",mData.get(position).getNm3());
-                intent.putExtra("no3",mData.get(position).getNo3());
-                intent.putExtra("almt1",mData.get(position).getAlamt());
-                intent.putExtra("jne",mData.get(position).getJne());
-                intent.putExtra("total",mData.get(position).getTotal());
-                mContext.startActivity(intent);
+
             }
         });
 
@@ -58,7 +52,7 @@ public class PesananAdapter extends RecyclerView.Adapter<PesananAdapter.MyViewHo
 
         public MyViewHolder(View itemView) {
             super(itemView);
-            tv_nm3 = itemView.findViewById(R.id.kmn1);
+            tv_nm3 = itemView.findViewById(R.id.namapmbeli);
             card = itemView.findViewById(R.id.cardpsn);
         }
     }

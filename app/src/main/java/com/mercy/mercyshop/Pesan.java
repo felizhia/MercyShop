@@ -9,12 +9,12 @@ public class Pesan {
     private String no3;
     private String alamt;
     private String jne;
-    private String total;
+    private double total;
 
     public Pesan() {
     }
 
-    public Pesan(String nm3, String no3, String alamt, String jne, String total) {
+    public Pesan(String nm3, String no3, String alamt, String jne, double total) {
         this.nm3 = nm3;
         this.no3 = no3;
         this.alamt = alamt;
@@ -54,11 +54,11 @@ public class Pesan {
         this.jne = jne;
     }
 
-    public String getTotal() {
+    public double getTotal() {
         return total;
     }
 
-    public void setTotal(String total) {
+    public void setTotal(double total) {
         this.total = total;
     }
 }

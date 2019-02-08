@@ -1,0 +1,35 @@
+[33mcommit 892a279113f0879fd1c23f9aeceb0b69b09e88d6[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31mnecroxx/master[m[33m)[m
+Author: Martino Christanto Khuangga <martino.aksel.11@gmail.com>
+Date:   Wed Jan 30 22:47:28 2019 +0700
+
+    Fix total data update
+
+[33mcommit bd188630e948a303b116ef61c9af457d39080d6d[m
+Author: Felizhia <felizhianarachan@gmail.com>
+Date:   Tue Jan 29 19:44:22 2019 +0700
+
+    get_total_when_item_remove
+
+[33mcommit c08455d92777d9e8a13f710d6bec2fcab82a645d[m
+Author: Felizhia <felizhianarachan@gmail.com>
+Date:   Fri Jan 25 18:43:45 2019 +0700
+
+    emunculkandarisegiadmin
+
+[33mcommit cc8196e72c01b9926197d3954393d743eedd0cb4[m
+Author: Felizhia <felizhianarachan@gmail.com>
+Date:   Sat Jan 19 15:32:12 2019 +0700
+
+    for problem
+
+[33mcommit 5f5d2794a7d445676607a1b61fe0a0fbeeba2904[m
+Author: Martino Christanto Khuangga <martino.aksel.11@gmail.com>
+Date:   Mon Jan 14 22:47:18 2019 +0700
+
+    Fix not working KeranjangFragment
+
+[33mcommit 3fc922192edd38961384aedb9a3bb978540c42fd[m
+Author: Felizhia <felizhianarachan@gmail.com>
+Date:   Mon Jan 14 00:35:51 2019 +0700
+
+    Initial commit

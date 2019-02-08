@@ -29,12 +29,8 @@ public class PesananFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View psn =  inflater.inflate(R.layout.fragment_pesanan,container,false);
-        lsTas = new ArrayList<>();
-        lsTas.add(new FinalTas("Tas Pink Mini","70.000",R.drawable.pinkmini));
-        lsTas.add(new FinalTas("Tas ToteBag","85.000",R.drawable.totebag));
-        lsTas.add(new FinalTas("Tas Totebag fold","100.000",R.drawable.totebagorange));
 
-        RecyclerView re = psn.findViewById(R.id.recheck);
+        RecyclerView re = psn.findViewById(R.id.psanan);
         RecyclerViewLAdapter ad = new RecyclerViewLAdapter(getContext(),lsTas);
         re.setAdapter(ad);
         re.setLayoutManager(new LinearLayoutManager(getActivity()));
