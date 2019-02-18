@@ -24,6 +24,9 @@ public class Product {
         this.price = price;
     }
 
+    public Product(String product, String title) {
+    }
+
     public String getTitle() {
         return title;
     }

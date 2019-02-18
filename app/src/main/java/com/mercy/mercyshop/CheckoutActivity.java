@@ -1,5 +1,6 @@
 package com.mercy.mercyshop;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -21,6 +23,7 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -32,7 +35,8 @@ public class CheckoutActivity extends AppCompatActivity {
     public String title;
     public int productImage;
     public double price;
-    private static String URL_CHECK="http://192.168.1.2/android_register_login/check.php";
+    private static String URL_CHECK="http://192.168.1.6/android_register_login/check.php";
+    private TextView jmlh;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +50,10 @@ public class CheckoutActivity extends AppCompatActivity {
         pro = findViewById(R.id.proses);
         btncheck = findViewById(R.id.btncheck);
 
-
+        Intent intent = getIntent();
+        String extrajmlh = intent.getStringExtra("total");
+        jmlh = findViewById(R.id.vttl1);
+        jmlh.setText(extrajmlh);
 
         btncheck.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,13 +63,14 @@ public class CheckoutActivity extends AppCompatActivity {
                 final String mno= no.getText().toString();
                 final String malamat= alamat.getText().toString();
                 final String mjne=jne.getText().toString();
+                final String mttl = jmlh.getText().toString();
 
                 Intent intent = new Intent(CheckoutActivity.this, CheckfinalActivity.class);
                 intent.putExtra("nama", mnama);
                 intent.putExtra("no", mno);
                 intent.putExtra("alamat", malamat);
                 intent.putExtra("jne", mjne);
-
+                intent.putExtra("total", mttl);
                 startActivity(intent);
 
             }
@@ -77,6 +85,7 @@ public class CheckoutActivity extends AppCompatActivity {
         final String no= this.no.getText().toString().trim();
         final String alamat= this.alamat.getText().toString().trim();
         final String jne= this.jne.getText().toString().trim();
+        final String jmlh = this.jmlh.getText().toString().trim();
 
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_CHECK,
@@ -87,6 +96,12 @@ public class CheckoutActivity extends AppCompatActivity {
                             JSONObject jsonObject = new JSONObject(response);
                             String success = jsonObject.getString("success");
                             if (success.equals("1")){
+                                Intent intent = new Intent(CheckoutActivity.this, CheckfinalActivity.class);
+                                intent.putExtra("nama", nama);
+                                intent.putExtra("no", no);
+                                intent.putExtra("alamat", alamat);
+                                intent.putExtra("jne", jne);
+                                intent.putExtra("total",jmlh);
                                 Toast.makeText(CheckoutActivity.this, "Terimakasih Sudah Berbelanja di Mercy Shop", Toast.LENGTH_SHORT).show();
                                 pro.setVisibility(View.GONE);
                             }
@@ -113,6 +128,7 @@ public class CheckoutActivity extends AppCompatActivity {
                 params.put("no",no);
                 params.put("alamat",alamat);
                 params.put("jne",jne);
+                params.put("total",jmlh);
                 return params;
             }
         };

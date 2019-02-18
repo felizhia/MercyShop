@@ -160,12 +160,28 @@
                 android:layout_below="@+id/jstp"/>
 
             <TextView
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="60dp"
                 android:layout_below="@+id/btncheck"
                 android:id="@+id/notif"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Options JNE hanya ada REG dan YES silahkan menuliskan di antara keduanya."/>
+
+            <TextView
+                android:id="@+id/total"
+                android:layout_below="@+id/notif"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Total Belanja :"/>
+            <TextView
+                android:id="@+id/vttl1"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@+id/total"
+                android:layout_below="@+id/notif"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Rp 0"/>
+
         </RelativeLayout>
     </android.support.v4.widget.NestedScrollView>
 </LinearLayout>

@@ -23,7 +23,6 @@ import java.util.Locale;
 public class CheckfinalActivity extends AppCompatActivity {
     private List<Product> example =new ArrayList<>();
     private Button belanja;
-    TextView total;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,17 +30,12 @@ public class CheckfinalActivity extends AppCompatActivity {
         setContentView(R.layout.activity_checkfinal);
         belanja = findViewById(R.id.blnj);
 
-        RecyclerView re = findViewById(R.id.recheck);
-        LinearLayoutManager aw3 =new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false);
-        ProductAdapter madapter = new ProductAdapter(this, example, getLayoutInflater(), total);
-        re.setAdapter(madapter);
-        re.setLayoutManager(aw3);
-
         Intent intent = getIntent();
         String extraname = intent.getStringExtra("nama");
         String extrano = intent.getStringExtra("no");
         String extraalamat = intent.getStringExtra("alamat");
         String extrajne = intent.getStringExtra("jne");
+        String extratotal = intent.getStringExtra("total");
 
         TextView name = findViewById(R.id.vnm);
         TextView no = findViewById(R.id.vno);
@@ -49,23 +43,29 @@ public class CheckfinalActivity extends AppCompatActivity {
         TextView jne = findViewById(R.id.vjs);
         TextView total = findViewById(R.id.vttl);
 
+
         name.setText(extraname);
         no.setText(extrano);
         alamat.setText(extraalamat);
         jne.setText(extrajne);
+        total.setText(extratotal);
 
-        Locale locale = new Locale("in","ID");
-        NumberFormat formatrupiah = NumberFormat.getCurrencyInstance(locale);
-        total.setText(formatrupiah.format(madapter.getTotalPrice()));
+        RecyclerView re = findViewById(R.id.recheck);
+        LinearLayoutManager aw3 = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+        ProductAdapter madapter = new ProductAdapter(this, example,getLayoutInflater(),total);
+        re.setAdapter(madapter);
+
+        re.setLayoutManager(aw3);
+
+
 
         belanja.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(CheckfinalActivity.this,MainActivity.class));
+                startActivity(new Intent(CheckfinalActivity.this, MainActivity.class));
                 KeranjangFragment.example.clear();
             }
         });
-
 
 
     }
