@@ -10,12 +10,13 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class PesananAdapter extends RecyclerView.Adapter<PesananAdapter.MyViewHolder> {
     private Context mContext;
-    private ArrayList<Pesan> mData;
+    private List<Pesan> mData;
 
-    public PesananAdapter(Context mContext, ArrayList<Pesan> mData) {
+    public PesananAdapter(Context mContext, List<Pesan> mData) {
         this.mContext = mContext;
         this.mData = mData;
     }
@@ -31,13 +32,13 @@ public class PesananAdapter extends RecyclerView.Adapter<PesananAdapter.MyViewHo
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, final int position) {
-        holder.tv_nm3.setText(mData.get(position).getNm3());
-        holder.card.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
+        Pesan pesan =mData.get(position);
+        holder.nama.setText(mData.get(position).getNama());
+        holder.no.setText(mData.get(position).getNo());
+        holder.alamat.setText(mData.get(position).getAlamt());
+        holder.jne.setText(mData.get(position).getJne());
+        holder.total.setText(mData.get(position).getTotal());
+        holder.card.setEnabled(true);
 
     }
 
@@ -47,12 +48,20 @@ public class PesananAdapter extends RecyclerView.Adapter<PesananAdapter.MyViewHo
     }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView tv_nm3;
+        TextView nama;
+        TextView no;
+        TextView alamat;
+        TextView jne;
+        TextView total;
         CardView card;
 
         public MyViewHolder(View itemView) {
             super(itemView);
-            tv_nm3 = itemView.findViewById(R.id.namapmbeli);
+            nama = itemView.findViewById(R.id.vnm2);
+            no = itemView.findViewById(R.id.vno2);
+            alamat = itemView.findViewById(R.id.valm2);
+            jne = itemView.findViewById(R.id.vjs2);
+            total = itemView.findViewById(R.id.vttl2);
             card = itemView.findViewById(R.id.cardpsn);
         }
     }

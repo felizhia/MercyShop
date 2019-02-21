@@ -31,10 +31,13 @@ public class StatusAdapter extends RecyclerView.Adapter<StatusAdapter.MyViewHold
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, final int position) {
+        Status status = mData.get(position);
         holder.tv_title.setText(mData.get(position).getNama());
         holder.tv_harga.setText(mData.get(position).getHarga());
         holder.tv_kode.setText(mData.get(position).getKode());
-        holder.sts.setText(mData.get(position).getSts());
+        holder.card.setEnabled(true);
+        holder.sts.setEnabled(true);
+
 
 
     }
@@ -55,7 +58,7 @@ public class StatusAdapter extends RecyclerView.Adapter<StatusAdapter.MyViewHold
             super(itemView);
             tv_title = itemView.findViewById(R.id.nm1);
             tv_harga = itemView.findViewById(R.id.angka);
-            tv_kode = itemView.findViewById(R.id.ktr);
+            tv_kode = itemView.findViewById(R.id.ktr2);
             sts = itemView.findViewById(R.id.sts1);
             card = itemView.findViewById(R.id.carstas);
         }

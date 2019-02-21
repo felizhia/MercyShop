@@ -38,14 +38,14 @@ public class KeranjangFragment extends Fragment {
     TextView total;
     Button btnpesan;
     String tr;
-
+    private static String URL_pesan ="http://192.168.1.7/android_register_login/product.php";
 
     public KeranjangFragment() {
     }
 
     public static List<Product> example = new ArrayList<>();
     ProductAdapter madapter;
-    public String title;
+    public TextView title;
     public int productImage;
     public double price;
 
@@ -86,64 +86,50 @@ public class KeranjangFragment extends Fragment {
         final ProgressDialog pDial = new ProgressDialog(getActivity());
         pDial.setMessage("Loading...");
         pDial.show();
-        String URL_pesan ="http://192.168.1.6/android_register_login/product.php";
 
         Map<String,String> params = new HashMap<>();
-        params.put("product",title);
+        params.put("product", String.valueOf(title));
         params.put("price", String.valueOf(price));
 
-        JSONObject parameters = new JSONObject(params);
+        JSONObject parameters = new JSONObject();
+        JSONArray products = new JSONArray();
+        for(Product p:example){
+            JSONObject prod = new JSONObject();
+            try {
+                prod.put("product",p.getTitle());
+                prod.put("price",p.getPrice());
+                products.put(prod);
+                parameters.put("products",products);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
 
-       /*JsonObjectRequest keranjang = new JsonObjectRequest(Request.Method.POST,URL_pesan,parameters,  new Response.Listener<JSONObject>() {
+       JsonObjectRequest keranjang = new JsonObjectRequest(Request.Method.POST,URL_pesan,parameters,  new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response)
             {
+                System.out.println();
                 try{
-                    JSONObject jsonObject = new JSONObject();
                     String success = response.getString("success");
-                    if (success.equals(1)) {
-                        Intent intent = new Intent(getActivity(),CheckfinalActivity.class);
+                        /*Intent intent = new Intent(getActivity(),CheckfinalActivity.class);
                         intent.putExtra("product", title);
                         intent.putExtra("price",price);
                         startActivity(intent);
                         String title = response.getString("product");
-                        String price = response.getString("price");
-                        Toast.makeText(getActivity(), "Tersimpan", Toast.LENGTH_SHORT).show();
-                        Product product = new Product();
+                        String price = response.getString("price");*/
+                    Toast.makeText(getActivity(), "Tersimpan", Toast.LENGTH_SHORT).show();
+                    madapter.notifyDataSetChanged();
+                    pDial.dismiss();
+                        /*Product product = new Product();
                         product.setTitle(jsonObject.getString("product"));
                         product.setPrice(jsonObject.getDouble("price"));
                         example.add(product);
-                        total.setText((int) jsonObject.getDouble("total"));
-
-                    }
+                        total.setText((int) jsonObject.getDouble("total"));*/
                 } catch (JSONException e) {
                     e.printStackTrace();
-                }*/
-
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_pesan,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        try {
-                            JSONObject jsonObject = new JSONObject(response);
-                            JSONArray success = jsonObject.getJSONArray("success");
-                                if (success.equals("1")) {
-                                    for(int i = 0;i<success.length();i++) {
-                                        JSONObject jo = success.getJSONObject(i);
-                                        Product product = new Product();
-                                        product.setTitle(jo.getString("title"));
-                                        product.setPrice(jo.getDouble("price"));
-                                        example.add(product);
-                                        Toast.makeText(getActivity(), "Disimpan", Toast.LENGTH_SHORT).show();
-                                        pDial.dismiss();
-                                    }
-                                }
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                            Toast.makeText(getActivity(), "Gagal", Toast.LENGTH_SHORT).show();
-                            pDial.dismiss();
-                        }pDial.dismiss();
-                madapter.notifyDataSetChanged();
+                    Toast.makeText(getActivity(), "Gagal", Toast.LENGTH_SHORT).show();
+                }
             }
        },new Response.ErrorListener() {
            @Override
@@ -153,24 +139,7 @@ public class KeranjangFragment extends Fragment {
                pDial.dismiss();
            }
        });
-        Volley.newRequestQueue(getActivity()).add(stringRequest);
-       /* JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(URL_pesan, new Response.Listener<JSONArray>() {
-            @Override
-            public void onResponse(JSONArray response) {
-                for (int i=0;i<response.length();i++){
-                    try{
-                        JSONObject jsonObject = response.getJSONObject(i);
-                        Product product = new Product();
-                        product.setTitle(jsonObject.getString("title"));
-                        product.setPrice(jsonObject.getDouble("price"));
-                        example.add(product);
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                }
-                madapter.notifyDataSetChanged();
-                pDial.dismiss();
-            }*/
+        Volley.newRequestQueue(getActivity()).add(keranjang);
 
     }
 

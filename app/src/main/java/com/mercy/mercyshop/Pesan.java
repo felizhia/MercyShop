@@ -5,37 +5,37 @@ package com.mercy.mercyshop;
  */
 
 public class Pesan {
-    private String nm3;
-    private String no3;
+    private String nama;
+    private String no;
     private String alamt;
     private String jne;
-    private double total;
+    private String total;
 
     public Pesan() {
     }
 
-    public Pesan(String nm3, String no3, String alamt, String jne, double total) {
-        this.nm3 = nm3;
-        this.no3 = no3;
+    public Pesan(String nama, String no, String alamt, String jne, String total) {
+        this.nama = nama;
+        this.no = no;
         this.alamt = alamt;
         this.jne = jne;
         this.total = total;
     }
 
-    public String getNm3() {
-        return nm3;
+    public String getNama() {
+        return nama;
     }
 
-    public void setNm3(String nm3) {
-        this.nm3 = nm3;
+    public void setNama(String nama) {
+        this.nama = nama;
     }
 
-    public String getNo3() {
-        return no3;
+    public String getNo() {
+        return no;
     }
 
-    public void setNo3(String no3) {
-        this.no3 = no3;
+    public void setNo(String no) {
+        this.no = no;
     }
 
     public String getAlamt() {
@@ -54,11 +54,11 @@ public class Pesan {
         this.jne = jne;
     }
 
-    public double getTotal() {
+    public String getTotal() {
         return total;
     }
 
-    public void setTotal(double total) {
+    public void setTotal(String total) {
         this.total = total;
     }
 }

@@ -29,14 +29,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class CheckoutActivity extends AppCompatActivity {
-    private EditText nama,no,alamat,jne;
+    private EditText nama,no,alamat,jne,jmlh;
     private ProgressBar pro;
     private Button btncheck;
     public String title;
     public int productImage;
     public double price;
-    private static String URL_CHECK="http://192.168.1.6/android_register_login/check.php";
-    private TextView jmlh;
+    private static String URL_CHECK="http://192.168.1.7/android_register_login/check.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

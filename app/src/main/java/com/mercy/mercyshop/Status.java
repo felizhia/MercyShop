@@ -8,16 +8,14 @@ public class Status {
     private String kode;
     private String Nama;
     private String Harga;
-    private String sts;
 
     public Status() {
     }
 
-    public Status(String kode, String nama, String harga, String sts) {
+    public Status(String kode, String nama, String harga) {
         this.kode = kode;
         Nama = nama;
         Harga = harga;
-        this.sts = sts;
     }
 
     public String getKode() {
@@ -42,13 +40,5 @@ public class Status {
 
     public void setHarga(String harga) {
         Harga = harga;
-    }
-
-    public String getSts() {
-        return sts;
-    }
-
-    public void setSts(String sts) {
-        this.sts = sts;
     }
 }
