@@ -37,7 +37,6 @@ public class PesananFragment extends Fragment {
     List<Pesan> pesn =new ArrayList<>();
     PesananAdapter pa;
     private static String pesanan ="http://192.168.1.7/android_register_login/hpesan.php";
-    private Button konfirm;
     public PesananFragment() {
     }
 
@@ -52,13 +51,7 @@ public class PesananFragment extends Fragment {
         pa = new PesananAdapter(getContext(),pesn);
         re.setAdapter(pa);
         re.setLayoutManager(lfc);
-        konfirm = psn.findViewById(R.id.KP);
-        konfirm.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                
-            }
-        });
+
         data();
 
         return psn;
