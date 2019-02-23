@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:id="@+id/cardker"
-    android:layout_height="70dp"
+    android:layout_height="80dp"
     android:paddingTop="20dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
@@ -20,25 +20,48 @@
             android:padding="2dp"
             android:id="@+id/pict" />
 
-        <TextView
-            android:layout_width="wrap_content"
+        <android.support.design.widget.TextInputLayout
+        android:layout_width="wrap_content"
+        android:id="@+id/vttl2"
+        android:layout_marginTop="-20dp"
+        android:layout_marginLeft="-5dp"
+        android:layout_toEndOf="@+id/pict"
+        android:layout_height="match_parent">
+        <EditText
+            android:id="@+id/barang"
+            android:inputType="text"
+            android:singleLine="true"
+            android:enabled="false"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_toEndOf="@+id/pict"
+            android:textColor="@color/cardview_dark_background"
             android:text="Product"
-            android:textSize="20sp"
             android:textStyle="bold"
-            android:id="@+id/barang" />
-
-        <TextView
-            android:id="@+id/hrga"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/barang"
-            android:layout_toEndOf="@+id/pict"
-            android:text="Harga"
             android:textSize="20sp"
-            android:textStyle="bold" />
+            android:layout_alignParentTop="true"
+            />
+    </android.support.design.widget.TextInputLayout>
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="wrap_content"
+            android:id="@+id/vttl1"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="-5dp"
+            android:layout_toEndOf="@+id/pict"
+            android:layout_height="match_parent">
+            <EditText
+                android:id="@+id/hrga"
+                android:inputType="text"
+                android:singleLine="true"
+                android:enabled="false"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Harga"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:textColor="@color/cardview_dark_background"
+                />
+        </android.support.design.widget.TextInputLayout>
+
         <ImageView
             android:id="@+id/del"
             android:layout_width="40dp"

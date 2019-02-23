@@ -56,6 +56,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
 
     @Override
     public void onBindViewHolder(@NonNull final MyViewHolder holder, final int position) {
+        Product product = mData.get(position);
         Locale locale = new Locale("in","ID");
 
         final NumberFormat formatrupiah = NumberFormat.getCurrencyInstance(locale);
@@ -80,6 +81,20 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
             totalPrice = totalPrice + mData.get(i).getPrice();
         }
         return totalPrice;
+    }
+    public String getproduct(){
+        String product = new String();
+        for (int i = 0; i < mData.size(); ++i) {
+            product = mData.get(i).getTitle();
+        }
+        return product;
+    }
+    public String getprice(){
+        String price = new String();
+        for (int i = 0; i < mData.size(); ++i) {
+            price = String.valueOf(mData.get(i).getPrice());
+        }
+        return price;
     }
 
     @Override

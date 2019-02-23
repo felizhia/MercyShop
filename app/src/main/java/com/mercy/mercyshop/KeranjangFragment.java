@@ -5,23 +5,26 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
+import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -35,17 +38,18 @@ import java.util.Map;
 import static android.media.CamcorderProfile.get;
 
 public class KeranjangFragment extends Fragment {
+    private EditText product,prices;
     TextView total;
     Button btnpesan;
     String tr;
-    private static String URL_pesan ="http://192.168.1.7/android_register_login/product.php";
+    private static String URL_pesan ="http://192.168.1.6/android_register_login/product.php";
 
     public KeranjangFragment() {
     }
 
     public static List<Product> example = new ArrayList<>();
     ProductAdapter madapter;
-    public TextView title;
+    public String title;
     public int productImage;
     public double price;
 
@@ -58,16 +62,19 @@ public class KeranjangFragment extends Fragment {
         LinearLayoutManager aw1 =new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false);
         rec.setLayoutManager(aw1);
 
+
         total = krnjg.findViewById(R.id.vtotal);
         madapter = new ProductAdapter(getContext(), example, getLayoutInflater(), total);
         rec.setAdapter(madapter);
+        product = krnjg.findViewById(R.id.barang);
+        prices = krnjg.findViewById(R.id.hrga);
 
         btnpesan = krnjg.findViewById(R.id.btnpsn);
         Locale locale = new Locale("in","ID");
 
         NumberFormat formatrupiah = NumberFormat.getCurrencyInstance(locale);
         total.setText(formatrupiah.format(madapter.getTotalPrice()));
-        
+
         btnpesan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -87,59 +94,53 @@ public class KeranjangFragment extends Fragment {
         pDial.setMessage("Loading...");
         pDial.show();
 
-        Map<String,String> params = new HashMap<>();
-        params.put("product", String.valueOf(title));
-        params.put("price", String.valueOf(price));
+        final String product = madapter.getproduct();
+        final String prices = madapter.getprice();
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_pesan,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+                            for (int i = 0; i < jsonObject.length(); i++) {
+                            String success = jsonObject.getString("success");
+                            if (success.equals("1")){
 
-        JSONObject parameters = new JSONObject();
-        JSONArray products = new JSONArray();
-        for(Product p:example){
-            JSONObject prod = new JSONObject();
-            try {
-                prod.put("product",p.getTitle());
-                prod.put("price",p.getPrice());
-                products.put(prod);
-                parameters.put("products",products);
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-        }
-
-       JsonObjectRequest keranjang = new JsonObjectRequest(Request.Method.POST,URL_pesan,parameters,  new Response.Listener<JSONObject>() {
+                                    Intent intent = new Intent(getActivity(), CheckoutActivity.class);
+                                    intent.putExtra("product", product);
+                                    intent.putExtra("price", prices);
+                                    /*Product pro = new Product();
+                                    pro.setTitle(jsonObject.getString(product));
+                                    pro.setPrice(jsonObject.getDouble(prices));
+                                    example.add(pro);*/
+                                    Toast.makeText(getActivity(), "Data Tersimpan", Toast.LENGTH_SHORT).show();
+                                    pDial.dismiss();
+                                }
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            Toast.makeText(getActivity(), "Gagal Menyimpan"+e.toString(), Toast.LENGTH_SHORT).show();
+                            pDial.dismiss();
+                        }
+                    }
+                },new Response.ErrorListener() {
             @Override
-            public void onResponse(JSONObject response)
-            {
-                System.out.println();
-                try{
-                    String success = response.getString("success");
-                        /*Intent intent = new Intent(getActivity(),CheckfinalActivity.class);
-                        intent.putExtra("product", title);
-                        intent.putExtra("price",price);
-                        startActivity(intent);
-                        String title = response.getString("product");
-                        String price = response.getString("price");*/
-                    Toast.makeText(getActivity(), "Tersimpan", Toast.LENGTH_SHORT).show();
-                    madapter.notifyDataSetChanged();
-                    pDial.dismiss();
-                        /*Product product = new Product();
-                        product.setTitle(jsonObject.getString("product"));
-                        product.setPrice(jsonObject.getDouble("price"));
-                        example.add(product);
-                        total.setText((int) jsonObject.getDouble("total"));*/
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                    Toast.makeText(getActivity(), "Gagal", Toast.LENGTH_SHORT).show();
-                }
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getActivity(), "Tidak Dapat Menyimpan"+error.toString(), Toast.LENGTH_SHORT).show();
+                pDial.dismiss();
             }
-       },new Response.ErrorListener() {
-           @Override
-           public void onErrorResponse(VolleyError error) {
-               error.printStackTrace();
-               Toast.makeText(getActivity(), "Tidak dapat menyimpan", Toast.LENGTH_SHORT).show();
-               pDial.dismiss();
-           }
-       });
-        Volley.newRequestQueue(getActivity()).add(keranjang);
+        })
+        {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("product", product);
+                params.put("price", prices);
+                return params;
+            }
+        };
+        RequestQueue requestQueue= Volley.newRequestQueue(getActivity());
+        requestQueue.add(stringRequest);
 
     }
 
