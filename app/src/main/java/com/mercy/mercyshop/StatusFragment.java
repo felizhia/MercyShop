@@ -28,7 +28,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StatusFragment extends Fragment {
-    private static String pesanan = "http://192.168.1.7/android_register_login/hpesan.php";
+    private static String pesanan = "http://mercyshopper.000webhostapp.com/hpesan.php";
 
     public StatusFragment() {
     }

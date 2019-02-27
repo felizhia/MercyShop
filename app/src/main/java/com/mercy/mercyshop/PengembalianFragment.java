@@ -50,7 +50,7 @@ import java.util.List;
 
 public class PengembalianFragment extends Fragment {
     List<Refund> ref = new ArrayList<>();
-    private String link ="http://192.168.1.3/android_register_login/hrefund.php";
+    private String link ="http://mercyshopper.000webhostapp.com/hrefund.php";
     RefundAdapter Adapter;
 
     @Nullable

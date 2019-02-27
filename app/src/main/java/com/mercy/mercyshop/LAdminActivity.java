@@ -30,7 +30,7 @@ public class LAdminActivity extends AppCompatActivity {
     private EditText name,email, password;
     private Button btnadmin;
     private ProgressBar loading;
-    private static String URL_LOGIN = "http://surveyclickon.000webhostapp.com/android_register_login/admin.php";
+    private static String URL_LOGIN = "http://mercyshopper.000webhostapp.com/admin.php";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

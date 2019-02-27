@@ -4,12 +4,18 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.hsalf.smilerating.BaseRating;
+import com.hsalf.smilerating.SmileRating;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
@@ -17,11 +23,14 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Vector;
 
+import static android.support.constraint.Constraints.TAG;
+
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder> {
     private Context mContext;
     LayoutInflater inflater;
     int positionbundle;
     ArrayList<Tas> mData;
+    SmileRating smileRating;
 
     public List<Product> example = new ArrayList<>();
     public String title;
@@ -46,6 +55,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
         holder.tv_title.setText(mData.get(position).getTitle());
         holder.tas_thumbnail.setImageResource(mData.get(position).getImg());
+        holder.ratingBar.setRating(5);
+        holder.smileRating.setSelectedSmile(BaseRating.GREAT);
         holder.card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -55,6 +66,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 intent.putExtra("Description", mData.get(position).getDescription());
                 intent.putExtra("Harga", mData.get(position).getHarga());
                 intent.putExtra("Img", mData.get(position).getImg());
+
                 mContext.startActivity(intent);
             }
         });
@@ -63,6 +75,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             public boolean onLongClick(View view) {
                 KeranjangFragment.example.add(new Product(title,productImage,price));
                 li();
+
                 notifyDataSetChanged();
                 Toast.makeText(mContext,"Barang "+holder.tv_title.getText()+" di tambahkan ke keranjang",Toast.LENGTH_SHORT).show();
                 return false;
@@ -92,6 +105,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         TextView tv_title;
         ImageView tas_thumbnail;
+        RatingBar ratingBar;
+        SmileRating smileRating;
         CardView card;
 
         public MyViewHolder(View itemView) {
@@ -99,6 +114,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             tv_title = itemView.findViewById(R.id.texttas);
             tas_thumbnail = itemView.findViewById(R.id.imagetas);
             card = itemView.findViewById(R.id.cardviewid);
+            ratingBar = itemView.findViewById(R.id.ratingBar);
+            smileRating=itemView.findViewById(R.id.smile_rating);
+            ratingBar.setIsIndicator(false);
+            smileRating.setIndicator(false);
         }
     }
 

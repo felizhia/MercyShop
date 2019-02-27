@@ -26,7 +26,7 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText name,email,password,cpassword;
     private Button btnRegister;
     private ProgressBar loading;
-    private static String URL_REGIST="http://surveyclickon.000webhostapp.com/android_register_login/register.php";
+    private static String URL_REGIST="http://mercyshopper.000webhostapp.com/register.php";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

@@ -34,7 +34,7 @@ public class RefundFragment extends Fragment {
     private EditText alasan;
     private ProgressBar proces;
     private Button btnrefund;
-    private static String URL_Refund ="http://surveyclickon.000webhostapp.com/android_register_login/refund.php";
+    private static String URL_Refund ="http://mercyshopper.000webhostapp.com/refund.php";
 
     @Nullable
     @Override
@@ -88,7 +88,7 @@ public class RefundFragment extends Fragment {
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
-                            Toast.makeText(getActivity(), "Kesalahan", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getActivity(), "Kesalahan, Mohon Check Kembali", Toast.LENGTH_SHORT).show();
                             proces.setVisibility(View.GONE);
                             btnrefund.setVisibility(View.VISIBLE);
                         }
@@ -96,7 +96,7 @@ public class RefundFragment extends Fragment {
                 },new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getActivity(), "Kesalahan Input Mohon Check Kembali pada nama maupun komentar yang kosong"+error.toString(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "Kesalahan Input Mohon Check Kembali Identitas Anda", Toast.LENGTH_SHORT).show();
                 proces.setVisibility(View.GONE);
                 btnrefund.setVisibility(View.VISIBLE);
             }

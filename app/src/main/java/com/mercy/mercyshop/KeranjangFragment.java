@@ -42,7 +42,7 @@ public class KeranjangFragment extends Fragment {
     TextView total;
     Button btnpesan;
     String tr;
-    private static String URL_pesan ="http://192.168.1.6/android_register_login/product.php";
+    private static String URL_pesan ="http://mercyshopper.000webhostapp.com/product.php";
 
     public KeranjangFragment() {
     }
@@ -102,31 +102,25 @@ public class KeranjangFragment extends Fragment {
                     public void onResponse(String response) {
                         try {
                             JSONObject jsonObject = new JSONObject(response);
-                            for (int i = 0; i < jsonObject.length(); i++) {
                             String success = jsonObject.getString("success");
                             if (success.equals("1")){
+                                Intent intent = new Intent(getActivity(), CheckoutActivity.class);
+                                intent.putExtra("product", product);
+                                intent.putExtra("price", prices);
 
-                                    Intent intent = new Intent(getActivity(), CheckoutActivity.class);
-                                    intent.putExtra("product", product);
-                                    intent.putExtra("price", prices);
-                                    /*Product pro = new Product();
-                                    pro.setTitle(jsonObject.getString(product));
-                                    pro.setPrice(jsonObject.getDouble(prices));
-                                    example.add(pro);*/
-                                    Toast.makeText(getActivity(), "Data Tersimpan", Toast.LENGTH_SHORT).show();
-                                    pDial.dismiss();
-                                }
+                                Toast.makeText(getActivity(), "Data Tersimpan", Toast.LENGTH_SHORT).show();
+                                pDial.dismiss();
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
-                            Toast.makeText(getActivity(), "Gagal Menyimpan"+e.toString(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getActivity(), "Gagal Menyimpan", Toast.LENGTH_SHORT).show();
                             pDial.dismiss();
                         }
                     }
                 },new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getActivity(), "Tidak Dapat Menyimpan"+error.toString(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "Tidak Dapat Menyimpan", Toast.LENGTH_SHORT).show();
                 pDial.dismiss();
             }
         })
@@ -134,8 +128,8 @@ public class KeranjangFragment extends Fragment {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
-                params.put("product", product);
-                params.put("price", prices);
+                params.put("product",product);
+                params.put("price",prices);
                 return params;
             }
         };

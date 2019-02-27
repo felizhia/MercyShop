@@ -5,6 +5,8 @@ import android.graphics.drawable.Drawable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -19,6 +21,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.hsalf.smilerating.BaseRating;
 import com.hsalf.smilerating.SmileRating;
 
 import org.json.JSONException;
@@ -34,7 +37,8 @@ import java.util.Map;
 import java.util.Vector;
 
 public class TasActivity extends AppCompatActivity {
-    private TextView tvtitle,tvcategory,tvdesc,tvhrg,nama,hrg;
+    private static final String TAG ="" ;
+    private TextView tvtitle,tvcategory,tvdesc,tvhrg,nama,hrg,mRatingScale;
     private Button btnblnja;
     private ImageView tvimg;
     private RatingBar rating;
@@ -60,8 +64,8 @@ public class TasActivity extends AppCompatActivity {
         tvhrg = findViewById(R.id.harga);
         tvimg = findViewById(R.id.tasthumbnail);
         btnblnja = findViewById(R.id.tambahbelanja);
-        rating = findViewById(R.id.ratingBar);
-        smile = findViewById(R.id.smile_rating);
+        rating = findViewById(R.id.ratingBar1);
+        smile = findViewById(R.id.smile_rating1);
 
         Intent intent= getIntent();
         title = intent.getExtras().getString("Title");
@@ -75,6 +79,30 @@ public class TasActivity extends AppCompatActivity {
         tvcategory.setText(Category);
         tvdesc.setText(Description);
         tvhrg.setText(formatrupiah.format(price));
+
+        smile.setOnSmileySelectionListener(new SmileRating.OnSmileySelectionListener() {
+            @Override
+            public void onSmileySelected(int smiley, boolean reselected) {
+                smiley = smile.getSelectedSmile();
+                switch (smiley) {
+                    case SmileRating.BAD:
+                        Log.i(TAG, "Bad");
+                        break;
+                    case SmileRating.GOOD:
+                        Log.i(TAG, "Good");
+                        break;
+                    case SmileRating.GREAT:
+                        Log.i(TAG, "Great");
+                        break;
+                    case SmileRating.OKAY:
+                        Log.i(TAG, "Okay");
+                        break;
+                    case SmileRating.TERRIBLE:
+                        Log.i(TAG, "Terrible");
+                        break;
+                }
+            }
+        });
 
         btnblnja.setOnClickListener(new View.OnClickListener() {
             @Override

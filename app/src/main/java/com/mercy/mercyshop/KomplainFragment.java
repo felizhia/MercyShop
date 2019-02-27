@@ -29,11 +29,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class KomplainFragment extends Fragment {
-    private EditText nama;
-    private EditText komentar;
+    private EditText nama, komentar;
     private ProgressBar proses;
     private Button btn;
-    private static String URL_KOMEN ="http://surveyclickon.000webhostapp.com/android_register_login/komen.php";
+    private static String URL_KOMEN ="http://mercyshopper.000webhostapp.com/komen.php";
 
     @Nullable
     @Override
@@ -41,13 +40,13 @@ public class KomplainFragment extends Fragment {
         View v =inflater.inflate(R.layout.fragment_komplain,container,false);
         nama = v.findViewById(R.id.nama1);
         komentar = v.findViewById(R.id.textlay);
-        proses = v.findViewById(R.id.progress);
-        btn = v.findViewById(R.id.btnkomen);
+        proses = v.findViewById(R.id.prog);
+        btn = v.findViewById(R.id.btnko);
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               Komentar();
+                Komentar();
             }
         });
         return v;
@@ -69,16 +68,15 @@ public class KomplainFragment extends Fragment {
                             JSONObject jsonObject = new JSONObject(response);
                             String success = jsonObject.getString("success");
                             if (success.equals("1")){
-                                Toast.makeText(getActivity(), "Terimakasih Atas Komentar Anda, Komentar Anda Akan Sangat Membantu Kami", Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(getActivity(),KomentarFragment.class);
                                 intent.putExtra("nama", nama);
                                 intent.putExtra("komen",komentar);
-                                startActivity(intent);
+                                Toast.makeText(getActivity(), "Terimakasih Atas Komentar Anda, Komentar Anda Akan Sangat Membantu Kami", Toast.LENGTH_SHORT).show();
                                 proses.setVisibility(View.GONE);
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
-                            Toast.makeText(getActivity(), "Kesalahan"+e.toString(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getActivity(), "Kesalahan, Mohon Check Kembali", Toast.LENGTH_SHORT).show();
                             proses.setVisibility(View.GONE);
                             btn.setVisibility(View.VISIBLE);
                         }
@@ -86,7 +84,7 @@ public class KomplainFragment extends Fragment {
                 },new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getActivity(), "Kesalahan Input Mohon Check Kembali pada nama maupun komentar yang kosong"+error.toString(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "Kesalahan Input Mohon Check Kembali Nama Dan Komentar", Toast.LENGTH_SHORT).show();
                 proses.setVisibility(View.GONE);
                 btn.setVisibility(View.VISIBLE);
             }

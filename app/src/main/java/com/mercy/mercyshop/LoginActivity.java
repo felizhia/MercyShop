@@ -34,7 +34,7 @@ public class LoginActivity extends AppCompatActivity {
     private TextView link_regist;
     private TextView link_admin;
     private ProgressBar loading;
-    private static String URL_LOGIN = "http://surveyclickon.000webhostapp.com/android_register_login/login.php";
+    private static String URL_LOGIN = "http://mercyshopper.000webhostapp.com/login.php";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -86,6 +86,7 @@ public class LoginActivity extends AppCompatActivity {
     private void Login(final String email, final String password) {
         loading.setVisibility(View.VISIBLE);
         btnLogin.setVisibility(View.GONE);
+
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_LOGIN,
                 new Response.Listener<String>() {
                     @Override
@@ -96,16 +97,17 @@ public class LoginActivity extends AppCompatActivity {
                             JSONArray jsonArray = jsonObject.getJSONArray("login");
 
                             if (success.equals("1")){
-
                                 for (int i=0; i<jsonArray.length();i++){
+
                                     JSONObject object= jsonArray.getJSONObject(i);
+
                                     String name = object.getString("name").trim();
                                     Toast.makeText(LoginActivity.this, "Login Berhasil. \nSelamat Datang : "+name, Toast.LENGTH_SHORT).show();
                                     Intent intent = new Intent(LoginActivity.this,MainActivity.class);
                                     intent.putExtra("name", name);
                                     intent.putExtra("email", email);
                                     setFirstTimeStartStatus(false);
-                                    startActivity(intent);
+                                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
                                     loading.setVisibility(View.GONE);
 
 
@@ -115,7 +117,7 @@ public class LoginActivity extends AppCompatActivity {
                             e.printStackTrace();
                             loading.setVisibility(View.GONE);
                             btnLogin.setVisibility(View.VISIBLE);
-                            Toast.makeText(LoginActivity.this, "Error Check Kembali Email dan Password"+e.toString(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LoginActivity.this, "Error Check Kembali Email dan Password", Toast.LENGTH_SHORT).show();
                         }
                     }
                 },
@@ -124,7 +126,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onErrorResponse(VolleyError error) {
                 loading.setVisibility(View.GONE);
                 btnLogin.setVisibility(View.VISIBLE);
-                Toast.makeText(LoginActivity.this, "Error"+error.toString(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(LoginActivity.this, "Error", Toast.LENGTH_SHORT).show();
             }
         })
         {

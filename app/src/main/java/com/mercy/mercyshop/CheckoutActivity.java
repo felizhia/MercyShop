@@ -35,7 +35,7 @@ public class CheckoutActivity extends AppCompatActivity {
     public String title;
     public int productImage;
     public double price;
-    private static String URL_CHECK="http://192.168.1.7/android_register_login/check.php";
+    private static String URL_CHECK="http://mercyshopper.000webhostapp.com/check.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -106,7 +106,7 @@ public class CheckoutActivity extends AppCompatActivity {
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
-                            Toast.makeText(CheckoutActivity.this, "Kesalahan"+e.toString(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(CheckoutActivity.this, "Kesalahan", Toast.LENGTH_SHORT).show();
                             pro.setVisibility(View.GONE);
                             btncheck.setVisibility(View.VISIBLE);
                         }
@@ -114,7 +114,7 @@ public class CheckoutActivity extends AppCompatActivity {
                 },new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(CheckoutActivity.this, "Kesalahan Input Mohon Check Kembali"+error.toString(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(CheckoutActivity.this, "Kesalahan Input Mohon Check Kembali", Toast.LENGTH_SHORT).show();
                 pro.setVisibility(View.GONE);
                 btncheck.setVisibility(View.VISIBLE);
             }

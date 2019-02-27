@@ -36,7 +36,10 @@ import java.util.List;
 public class PesananFragment extends Fragment {
     List<Pesan> pesn =new ArrayList<>();
     PesananAdapter pa;
-    private static String pesanan ="http://192.168.1.7/android_register_login/hpesan.php";
+    FinalTasAdapter xadapter;
+    private List<Final> ex =new ArrayList<>();
+    private static String hasil ="http://mercyshopper.000webhostapp.com/hproduct.php";
+    private static String pesanan ="http://mercyshopper.000webhostapp.com/hpesan.php";
     public PesananFragment() {
     }
 
@@ -45,6 +48,11 @@ public class PesananFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View psn =  inflater.inflate(R.layout.fragment_pesanan,container,false);
 
+        RecyclerView rex = psn.findViewById(R.id.psanan2);
+        LinearLayoutManager lfci = new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false);
+        xadapter = new FinalTasAdapter(getContext(),ex);
+        rex.setAdapter(xadapter);
+        rex.setLayoutManager(lfci);
 
         RecyclerView re = psn.findViewById(R.id.psanan);
         LinearLayoutManager lfc = new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false);
@@ -52,6 +60,7 @@ public class PesananFragment extends Fragment {
         re.setAdapter(pa);
         re.setLayoutManager(lfc);
 
+        data2();
         data();
 
         return psn;
@@ -82,6 +91,43 @@ public class PesananFragment extends Fragment {
                     }
                 }
                 pa.notifyDataSetChanged();
+                pDial.dismiss();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e("Volley",error.toString());
+                pDial.dismiss();
+            }
+        });
+
+        RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
+        requestQueue.add(jsonArrayRequest);
+    }
+
+    private void data2() {
+        final ProgressDialog pDial = new ProgressDialog(getActivity());
+        pDial.setMessage("Loading...");
+        pDial.show();
+
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(hasil, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+                for (int i = 0; i < response.length(); i++) {
+                    try {
+                        JSONObject jsonObject = response.getJSONObject(i);
+
+                        Final prod = new Final();
+                        prod.setProduct(jsonObject.getString("product"));
+                        prod.setPrice(jsonObject.getString("price"));
+                        ex.add(prod);
+                        xadapter.notifyDataSetChanged();
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                        pDial.dismiss();
+                    }
+                }
+                xadapter.notifyDataSetChanged();
                 pDial.dismiss();
             }
         }, new Response.ErrorListener() {
