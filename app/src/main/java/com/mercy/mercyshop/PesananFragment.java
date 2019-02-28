@@ -55,7 +55,7 @@ public class PesananFragment extends Fragment {
         rex.setLayoutManager(lfci);
 
         RecyclerView re = psn.findViewById(R.id.psanan);
-        LinearLayoutManager lfc = new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false);
+        LinearLayoutManager lfc = new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false);
         pa = new PesananAdapter(getContext(),pesn);
         re.setAdapter(pa);
         re.setLayoutManager(lfc);

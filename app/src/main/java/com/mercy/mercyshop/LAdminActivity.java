@@ -1,6 +1,8 @@
 package com.mercy.mercyshop;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -60,6 +62,12 @@ public class LAdminActivity extends AppCompatActivity {
 
 
     }
+    private void setFirstTimeStartStatus(boolean stt){
+        SharedPreferences ref = getApplicationContext().getSharedPreferences("IntroSliderApp", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = ref.edit();
+        editor.putBoolean("FirstTimeStartFlag", stt);
+        editor.commit();
+    }
 
     private void Login(final String email, final String password) {
         loading.setVisibility(View.VISIBLE);
@@ -83,6 +91,7 @@ public class LAdminActivity extends AppCompatActivity {
                                     intent.putExtra("name", name);
                                     intent.putExtra("email", email);
                                     startActivity(intent);
+                                    setFirstTimeStartStatus(false);
                                     loading.setVisibility(View.GONE);
 
 

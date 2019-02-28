@@ -59,7 +59,7 @@ public class PengembalianFragment extends Fragment {
         View pgmb = inflater.inflate(R.layout.fragment_pengembalian, container, false);
 
         RecyclerView last =pgmb.findViewById(R.id.href);
-        LinearLayoutManager lref = new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false);
+        LinearLayoutManager lref = new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false);
         Adapter = new RefundAdapter(getContext(),ref);
         last.setLayoutManager(lref);
         last.setAdapter(Adapter);
