@@ -101,6 +101,14 @@
                     android:layout_height="wrap_content"
                     />
             </android.support.design.widget.TextInputLayout>
+            <Spinner
+                android:id="@+id/spinner1"
+                android:layout_below="@id/alm"
+                android:layout_marginLeft="140dp"
+                android:layout_width="200dp"
+                android:layout_height="20dp"
+                android:entries="@array/provinsi"
+                android:prompt="@string/provinsi_prompt" />
             <TextView
                 android:layout_below="@+id/alm"
                 android:layout_width="wrap_content"

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="300dp"
+    android:layout_height="200dp"
+    android:layout_gravity="center"
+    android:background="@color/colorPrimary"
+    android:padding="5dp">
+    <TextView
+        android:id="@+id/selesai"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="SELESAI BERBELANJA?"
+        android:textColor="@color/colorText"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        android:gravity="center"/>
+    <com.hsalf.smilerating.SmileRating
+        android:id="@+id/smile_rating2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/selesai"
+        android:isIndicator="true"
+        android:scaleX="0.8"
+        android:scaleY="0.8" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <Button
+        android:id="@+id/brnd"
+        android:layout_width="140dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+
+        android:background="@color/colorAccent"
+        android:text="Beranda" />
+    <Button
+        android:id="@+id/krnj"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="10dp"
+        android:layout_toEndOf="@id/brnd"
+        android:layout_marginTop="10dp"
+        android:background="@color/colorAccent"
+        android:text="Keranjang belanja" />
+    </RelativeLayout>
+</LinearLayout>

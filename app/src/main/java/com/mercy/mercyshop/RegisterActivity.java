@@ -64,7 +64,7 @@ public class RegisterActivity extends AppCompatActivity {
                             JSONObject jsonObject = new JSONObject(response);
                             String success = jsonObject.getString("success");
                             if (success.equals("1")){
-                                Toast.makeText(RegisterActivity.this, "Registrasi Sukses!", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(RegisterActivity.this, "Silahkan Check Email Untuk Validasi", Toast.LENGTH_SHORT).show();
                                 loading.setVisibility(View.GONE);
                             }
                         } catch (JSONException e) {

@@ -15,6 +15,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -49,6 +50,7 @@ import java.util.List;
  */
 
 public class PengembalianFragment extends Fragment {
+    Button re;
     List<Refund> ref = new ArrayList<>();
     private String link ="http://mercyshopper.000webhostapp.com/hrefund.php";
     RefundAdapter Adapter;
@@ -57,6 +59,7 @@ public class PengembalianFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View pgmb = inflater.inflate(R.layout.fragment_pengembalian, container, false);
+        re = pgmb.findViewById(R.id.rep);
 
         RecyclerView last =pgmb.findViewById(R.id.href);
         LinearLayoutManager lref = new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false);
@@ -64,7 +67,13 @@ public class PengembalianFragment extends Fragment {
         last.setLayoutManager(lref);
         last.setAdapter(Adapter);
         data();
-
+        re.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent= new Intent(getActivity(),ReplyRefund.class);
+                getActivity().startActivity(intent);
+            }
+        });
         return pgmb;
     }
 

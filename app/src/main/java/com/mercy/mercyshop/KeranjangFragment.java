@@ -50,6 +50,7 @@ public class KeranjangFragment extends Fragment {
     public static List<Product> example = new ArrayList<>();
     ProductAdapter madapter;
     public String title;
+    public TextView quanti;
     public int productImage;
     public double price;
 
@@ -68,8 +69,10 @@ public class KeranjangFragment extends Fragment {
         rec.setAdapter(madapter);
         product = krnjg.findViewById(R.id.barang);
         prices = krnjg.findViewById(R.id.hrga);
-
+        quanti = krnjg.findViewById(R.id.hquan);
         btnpesan = krnjg.findViewById(R.id.btnpsn);
+
+
         Locale locale = new Locale("in","ID");
 
         NumberFormat formatrupiah = NumberFormat.getCurrencyInstance(locale);

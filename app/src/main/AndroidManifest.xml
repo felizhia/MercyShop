@@ -50,6 +50,12 @@
         <activity android:name=".PesananActivity">
 
         </activity>
+        <activity android:name=".ReplyRefund">
+
+        </activity>
+        <activity android:name=".ReplyKomen">
+
+        </activity>
     </application>
 
 </manifest>

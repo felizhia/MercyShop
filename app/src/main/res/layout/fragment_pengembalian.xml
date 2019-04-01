@@ -8,7 +8,14 @@
         <android.support.v7.widget.RecyclerView
             android:id="@+id/href"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="400dp">
 
         </android.support.v7.widget.RecyclerView>
+        <Button
+            android:id="@+id/rep"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_below="@id/href"
+            android:text="Balas"
+            />
 </LinearLayout>

@@ -1,32 +1,21 @@
 package com.mercy.mercyshop;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.Intent;
-import android.graphics.drawable.Drawable;
-import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.gson.JsonParseException;
-
 import java.text.NumberFormat;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
 import static android.support.v4.app.Fragment.instantiate;
-import static com.mercy.mercyshop.KeranjangFragment.example;
 
 /**
  * Created by Mizuka Anamato on 13/09/2018.
@@ -37,6 +26,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
     List<Product> mData;
     LayoutInflater mla;
     TextView tvTotal;
+    double quantity;
 
     public ProductAdapter(Context mCon, List<Product> mData, LayoutInflater mla, TextView total) {
         this.mCon = mCon;
@@ -78,10 +68,12 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
     public double getTotalPrice() {
         double totalPrice = 0;
         for (int i = 0; i < mData.size(); ++i) {
-            totalPrice = totalPrice + mData.get(i).getPrice();
+            quantity *= totalPrice;
+            totalPrice = totalPrice + mData.get(i).getPrice() + 10000;
         }
-        return totalPrice;
+        return quantity;
     }
+
     public String getproduct(){
         String product = new String();
         for (int i = 0; i < mData.size(); ++i) {
@@ -108,6 +100,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
         TextView hrg;
         CardView cd;
         ImageView del;
+        TextView quantity;
 
         public MyViewHolder(View itemView) {
             super(itemView);
@@ -116,6 +109,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
             hrg = itemView.findViewById(R.id.hrga);
             cd = itemView.findViewById(R.id.cardker);
             del = itemView.findViewById(R.id.del);
+            quantity = itemView.findViewById(R.id.hquan);
         }
 
     }

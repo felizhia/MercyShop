@@ -31,7 +31,7 @@ public class RefundAdapter extends RecyclerView.Adapter<RefundAdapter.MyViewHold
     }
 
     @Override
-    public void onBindViewHolder(MyViewHolder holder, final int position) {
+    public void onBindViewHolder(final MyViewHolder holder, final int position) {
         Refund refund = mData.get(position);
         holder.rnama.setText(mData.get(position).getNama());
         holder.rno.setText(mData.get(position).getNo());

@@ -36,6 +36,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public String title;
     public int productImage;
     public double price;
+    public double quantity;
 
     public RecyclerViewAdapter(Context mContext, ArrayList<Tas> mData) {
         this.mContext = mContext;
@@ -55,7 +56,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
         holder.tv_title.setText(mData.get(position).getTitle());
         holder.tas_thumbnail.setImageResource(mData.get(position).getImg());
-        holder.ratingBar.setRating(5);
         holder.smileRating.setSelectedSmile(BaseRating.GREAT);
         holder.card.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,7 +66,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 intent.putExtra("Description", mData.get(position).getDescription());
                 intent.putExtra("Harga", mData.get(position).getHarga());
                 intent.putExtra("Img", mData.get(position).getImg());
-
                 mContext.startActivity(intent);
             }
         });
@@ -93,6 +92,13 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             example.add(new Product("Tas Pink Mini", R.drawable.pinkmini, 70000));
             example.add(new Product("Tas ToteBag", R.drawable.totebag, 85000));
             example.add(new Product("Tas Totebag fold", R.drawable.totebagorange, 100000));
+            example.add(new Product("Tas Sekolah Hitam",100000,R.drawable.backpack));
+            example.add(new Product("Backpack Trendy",130000,R.drawable.backpackhitam));
+            example.add(new Product("Triangle Cute",50000,R.drawable.triangle));
+            example.add(new Product("Mini Purple Bag",80000,R.drawable.purplebag));
+            example.add(new Product("Trendy Bag",200000,R.drawable.taskeren));
+            example.add(new Product("Yellow Bag",100000,R.drawable.tasunik));
+            example.add(new Product("Bag Seword Red",250000,R.drawable.redbag));
         }
     }
 
@@ -105,7 +111,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         TextView tv_title;
         ImageView tas_thumbnail;
-        RatingBar ratingBar;
         SmileRating smileRating;
         CardView card;
 
@@ -114,9 +119,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             tv_title = itemView.findViewById(R.id.texttas);
             tas_thumbnail = itemView.findViewById(R.id.imagetas);
             card = itemView.findViewById(R.id.cardviewid);
-            ratingBar = itemView.findViewById(R.id.ratingBar);
             smileRating=itemView.findViewById(R.id.smile_rating);
-            ratingBar.setIsIndicator(false);
             smileRating.setIndicator(false);
         }
     }

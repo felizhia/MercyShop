@@ -1,6 +1,10 @@
 package com.mercy.mercyshop;
 
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +13,7 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -37,10 +42,12 @@ import java.util.Map;
 import java.util.Vector;
 
 public class TasActivity extends AppCompatActivity {
+    Dialog myd;
     private static final String TAG ="" ;
     private TextView tvtitle,tvcategory,tvdesc,tvhrg,nama,hrg,mRatingScale;
     private Button btnblnja;
     private ImageView tvimg;
+    private EditText quan;
     private RatingBar rating;
     private SmileRating smile;
 
@@ -48,12 +55,15 @@ public class TasActivity extends AppCompatActivity {
     public String title;
     public int productImage;
     public double price;
+    int quantity=0;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tas);
+
+
 
         Locale locale = new Locale("in","ID");
 
@@ -64,7 +74,8 @@ public class TasActivity extends AppCompatActivity {
         tvhrg = findViewById(R.id.harga);
         tvimg = findViewById(R.id.tasthumbnail);
         btnblnja = findViewById(R.id.tambahbelanja);
-        rating = findViewById(R.id.ratingBar1);
+        quan = findViewById(R.id.hquan);
+
         smile = findViewById(R.id.smile_rating1);
 
         Intent intent= getIntent();
@@ -103,11 +114,60 @@ public class TasActivity extends AppCompatActivity {
                 }
             }
         });
-
+        myd=new Dialog(this);
         btnblnja.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 KeranjangFragment.example.add(new Product(title, productImage, price));
+                ShowPop(view);
+            }
+        });
+    }
+    public void increment(View view){//perintah tombol tambah
+        if(quantity==100){
+            Toast.makeText(this,"pesanan maximal 100",Toast.LENGTH_SHORT).show();
+            return;
+        }
+        quantity = quantity+1 ;
+        display(quantity);
+    }
+
+    private void display(int number) {
+        TextView quantityTextView =findViewById(R.id.quantity_textview);
+        quantityTextView.setText("" + number);
+    }
+
+    public void decrement(View view){//perintah tombol tambah
+        if (quantity==1){
+            Toast.makeText(this,"pesanan minimal 1",Toast.LENGTH_SHORT).show();
+            return;
+        }
+        quantity = quantity -1;
+        display(quantity);
+    }
+    public void ShowPop(final View v){
+        SmileRating smileRating;
+        Button brand;
+        Button krnjang;
+        myd.setContentView(R.layout.popup);
+        brand =myd.findViewById(R.id.brnd);
+        krnjang=myd.findViewById(R.id.krnj);
+        smileRating=myd.findViewById(R.id.smile_rating2);
+
+        brand.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                myd.dismiss();
+                finish();
+            }
+        });
+
+        myd.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        myd.show();
+        krnjang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                myd.dismiss();
                 finish();
             }
         });

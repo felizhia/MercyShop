@@ -12,10 +12,14 @@
             android:title="Beranda" />
         <item android:title="Tools">
             <menu>
+                <item
+                    android:id="@+id/nav_pesanan"
+                    android:icon="@drawable/ic_belanja"
+                    android:title="Pesanan Masuk" />
         <item
-            android:id="@+id/nav_pesanan"
-            android:icon="@drawable/ic_belanja"
-            android:title="Pesanan Masuk" />
+            android:id="@+id/nav_check"
+            android:icon="@drawable/ic_check"
+            android:title="Check Stock" />
         <item
             android:id="@+id/nav_komplainuser"
             android:icon="@drawable/ic_komplain"

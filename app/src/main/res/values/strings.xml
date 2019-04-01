@@ -4,4 +4,41 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="action_settings">Settings</string>
+    <string name="provinsi_prompt">Pilih Provinsi</string>
+    <string-array name="provinsi">
+        <item>Bali</item>
+        <item>Bangka Belitung</item>
+        <item>Banten</item>
+        <item>Bengkulu</item>
+        <item>DI Yogyakarta</item>
+        <item>DKI Jakarta</item>
+        <item>Gorontalo</item>
+        <item>Jambi</item>
+        <item>Jawa Barat</item>
+        <item>Jawa Tengah</item>
+        <item>Jawa Timur</item>
+        <item>Kalimantan Barat</item>
+        <item>Kalimantan Selatan</item>
+        <item>Kalimantan Tengah</item>
+        <item>Kalimantan Timur</item>
+        <item>Kalimantan Utara</item>
+        <item>Kepulauan Riau</item>
+        <item>Lampung</item>
+        <item>Maluku</item>
+        <item>Maluku Utara</item>
+        <item>Nangroe Aceh Darussalam (NAD)</item>
+        <item>Nusa Tenggara Barat (NTB)</item>
+        <item>Nusa Tenggara Timur (NTT)</item>
+        <item>Papua</item>
+        <item>Papua Barat</item>
+        <item>Riau</item>
+        <item>Sulawesi Barat</item>
+        <item>Sulawesi Selatan</item>
+        <item>Sulawesi Tengah</item>
+        <item>Sulawesi Tenggara</item>
+        <item>Sulawesi Utara</item>
+        <item>Sumatra Barat</item>
+        <item>Sumatra Selatan</item>
+        <item>Sumatra Utara</item>
+    </string-array>
 </resources>

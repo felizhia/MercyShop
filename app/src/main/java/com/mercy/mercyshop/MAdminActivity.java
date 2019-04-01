@@ -54,6 +54,9 @@ public class MAdminActivity extends AppCompatActivity {
                     case R.id.nav_jual:
                         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container1, new JualFragment()).commit();
                         break;
+                    case R.id.nav_check:
+                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container1, new CheckFragment()).commit();
+                        break;
                     case R.id.nav_pesanan:
                         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container1, new PesananFragment()).commit();
                         break;

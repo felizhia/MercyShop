@@ -5,10 +5,13 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,6 +33,7 @@ import java.util.Map;
 
 public class CheckoutActivity extends AppCompatActivity {
     private EditText nama,no,alamat,jne,jmlh;
+    private Spinner spin;
     private ProgressBar pro;
     private Button btncheck;
     public String title;
@@ -48,6 +52,13 @@ public class CheckoutActivity extends AppCompatActivity {
         jne = findViewById(R.id.ijasa);
         pro = findViewById(R.id.proses);
         btncheck = findViewById(R.id.btncheck);
+        spin = findViewById(R.id.spinner1);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.provinsi, android.R.layout.simple_spinner_item);
+// Specify the layout to use when the list of choices appears
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+// Apply the adapter to the spinner
+        spin.setAdapter(adapter);
 
         Intent intent = getIntent();
         String extrajmlh = intent.getStringExtra("total");
@@ -76,7 +87,7 @@ public class CheckoutActivity extends AppCompatActivity {
         });
     }
 
-     private void checkout() {
+    private void checkout() {
         pro.setVisibility(View.VISIBLE);
         btncheck.setVisibility(View.GONE);
 

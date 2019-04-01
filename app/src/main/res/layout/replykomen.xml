@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    tools:context=".ReplyKomen">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Balasan Komentar"
+        android:textAlignment="center"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/balas"/>
+    <TextView
+        android:layout_below="@+id/balas"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:layout_marginLeft="60dp"
+        android:text="Reply :"
+        android:textAlignment="center"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        android:layout_marginTop="30dp"
+        android:id="@+id/reply"/>
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="200dp"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/reply"
+        android:layout_below="@+id/balas"
+        android:layout_height="wrap_content">
+        <EditText
+            android:id="@+id/reps"
+            android:inputType="text"
+            android:singleLine="true"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            />
+    </android.support.design.widget.TextInputLayout>
+    <ProgressBar
+        android:layout_below="@+id/reply"
+        android:id="@+id/pro"
+        android:layout_marginTop="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"/>
+    <Button
+        android:id="@+id/btnbalas"
+        android:layout_width="300dp"
+        android:text="Balas"
+        android:textStyle="bold"
+        android:textColor="@color/colorText"
+        android:layout_marginLeft="50dp"
+        android:background="@color/colorPrimary1"
+        android:layout_height="40dp"
+        android:layout_below="@+id/reply"/>
+
+</RelativeLayout>
