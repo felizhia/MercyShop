@@ -72,6 +72,7 @@ public class StatusFragment extends Fragment {
                         status.setKode(jsonObject.getString("id"));
                         status.setNama(jsonObject.getString("nama"));
                         status.setHarga(jsonObject.getString("total"));
+                        status.setQuan(jsonObject.getString("quan"));
                         st.add(status);
                         mAdapter.notifyDataSetChanged();
                     } catch (JSONException e) {

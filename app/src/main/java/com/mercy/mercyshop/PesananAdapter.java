@@ -38,6 +38,7 @@ public class PesananAdapter extends RecyclerView.Adapter<PesananAdapter.MyViewHo
         holder.alamat.setText(mData.get(position).getAlamt());
         holder.jne.setText(mData.get(position).getJne());
         holder.total.setText(mData.get(position).getTotal());
+        holder.quan.setText(mData.get(position).getQuan());
         holder.card.setEnabled(true);
 
     }
@@ -53,6 +54,7 @@ public class PesananAdapter extends RecyclerView.Adapter<PesananAdapter.MyViewHo
         TextView alamat;
         TextView jne;
         TextView total;
+        TextView quan;
         CardView card;
 
         public MyViewHolder(View itemView) {
@@ -62,6 +64,7 @@ public class PesananAdapter extends RecyclerView.Adapter<PesananAdapter.MyViewHo
             alamat = itemView.findViewById(R.id.valm2);
             jne = itemView.findViewById(R.id.vjs2);
             total = itemView.findViewById(R.id.vttl2);
+            quan = itemView.findViewById(R.id.qy2);
             card = itemView.findViewById(R.id.cardpsn);
         }
     }

@@ -83,6 +83,7 @@ public class PesananFragment extends Fragment {
                         pesan.setAlamt(jsonObject.getString("alamat"));
                         pesan.setJne(jsonObject.getString("jne"));
                         pesan.setTotal(jsonObject.getString("total"));
+                        pesan.setQuan(jsonObject.getString("quan"));
                         pesn.add(pesan);
                         pa.notifyDataSetChanged();
                     } catch (JSONException e) {
@@ -120,6 +121,7 @@ public class PesananFragment extends Fragment {
                         Final prod = new Final();
                         prod.setProduct(jsonObject.getString("product"));
                         prod.setPrice(jsonObject.getString("price"));
+                        prod.setQuan(jsonObject.getString("quan"));
                         ex.add(prod);
                         xadapter.notifyDataSetChanged();
                     } catch (JSONException e) {

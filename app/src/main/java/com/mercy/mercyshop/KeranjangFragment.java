@@ -38,7 +38,7 @@ import java.util.Map;
 import static android.media.CamcorderProfile.get;
 
 public class KeranjangFragment extends Fragment {
-    private EditText product,prices;
+    private EditText product,prices,quan;
     TextView total;
     Button btnpesan;
     String tr;
@@ -48,6 +48,7 @@ public class KeranjangFragment extends Fragment {
     }
 
     public static List<Product> example = new ArrayList<>();
+    public static List<Quantity> q = new ArrayList<>();
     ProductAdapter madapter;
     public String title;
     public TextView quanti;
@@ -65,26 +66,31 @@ public class KeranjangFragment extends Fragment {
 
 
         total = krnjg.findViewById(R.id.vtotal);
-        madapter = new ProductAdapter(getContext(), example, getLayoutInflater(), total);
+        madapter = new ProductAdapter(getContext(), example, getLayoutInflater(), total,q,quanti);
         rec.setAdapter(madapter);
         product = krnjg.findViewById(R.id.barang);
         prices = krnjg.findViewById(R.id.hrga);
-        quanti = krnjg.findViewById(R.id.hquan);
+        quan = krnjg.findViewById(R.id.hquan);
+        quanti = krnjg.findViewById(R.id.vquan);
         btnpesan = krnjg.findViewById(R.id.btnpsn);
 
 
         Locale locale = new Locale("in","ID");
 
         NumberFormat formatrupiah = NumberFormat.getCurrencyInstance(locale);
+        NumberFormat format = NumberFormat.getIntegerInstance();
         total.setText(formatrupiah.format(madapter.getTotalPrice()));
+        quanti.setText(format.format(madapter.getQuan()));
 
         btnpesan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 placeorder();
                 final String mtotal = total.getText().toString();
+                final String mqu = quanti.getText().toString();
                 Intent intent = new Intent(getActivity(), CheckoutActivity.class);
                 intent.putExtra("total",mtotal);
+                intent.putExtra("quanti",mqu);
                 startActivity(intent);
             }
         });
@@ -99,6 +105,7 @@ public class KeranjangFragment extends Fragment {
 
         final String product = madapter.getproduct();
         final String prices = madapter.getprice();
+        final String quantity = madapter.getQuanty();
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_pesan,
                 new Response.Listener<String>() {
                     @Override
@@ -110,7 +117,7 @@ public class KeranjangFragment extends Fragment {
                                 Intent intent = new Intent(getActivity(), CheckoutActivity.class);
                                 intent.putExtra("product", product);
                                 intent.putExtra("price", prices);
-
+                                intent.putExtra("quan",quantity);
                                 Toast.makeText(getActivity(), "Data Tersimpan", Toast.LENGTH_SHORT).show();
                                 pDial.dismiss();
                             }
@@ -133,6 +140,7 @@ public class KeranjangFragment extends Fragment {
                 Map<String, String> params = new HashMap<>();
                 params.put("product",product);
                 params.put("price",prices);
+                params.put("quan",quantity);
                 return params;
             }
         };

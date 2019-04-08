@@ -59,23 +59,21 @@ public class CheckfinalActivity extends AppCompatActivity {
         String extraalamat = intent.getStringExtra("alamat");
         String extrajne = intent.getStringExtra("jne");
         String extratotal = intent.getStringExtra("total");
+        String extraquan = intent.getStringExtra("quan");
 
         TextView name = findViewById(R.id.vnm);
         TextView no = findViewById(R.id.vno);
         TextView alamat = findViewById(R.id.valm);
         TextView jne = findViewById(R.id.vjs);
         TextView total = findViewById(R.id.vttl);
-
+        TextView quantity = findViewById(R.id.vqu);
 
         name.setText(extraname);
         no.setText(extrano);
         alamat.setText(extraalamat);
         jne.setText(extrajne);
         total.setText(extratotal);
-
-
-
-
+        quantity.setText(extraquan);
 
         belanja.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -102,6 +100,7 @@ public class CheckfinalActivity extends AppCompatActivity {
                         Final prod = new Final();
                         prod.setProduct(jsonObject.getString("product"));
                         prod.setPrice(jsonObject.getString("price"));
+                        prod.setQuan(jsonObject.getString("quan"));
                         ex.add(prod);
                         xadapter.notifyDataSetChanged();
                     } catch (JSONException e) {

@@ -152,7 +152,13 @@
                 android:layout_height="wrap_content"
                 />
         </android.support.design.widget.TextInputLayout>
-
+        <CheckBox
+            android:id="@+id/che"
+            android:layout_below="@id/alsn"
+            android:layout_width="300dp"
+            android:layout_centerHorizontal="true"
+            android:layout_height="wrap_content"
+            android:text="Dengan Mengeklik ini Anda Tunduk Pada Syarat dan Peraturan Kami"/>
     <ProgressBar
         android:layout_below="@+id/alsnq"
         android:id="@+id/loading1"

@@ -24,15 +24,18 @@ import static android.support.v4.app.Fragment.instantiate;
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHolder> {
     private Context mCon;
     List<Product> mData;
+    List<Quantity> mData1;
     LayoutInflater mla;
     TextView tvTotal;
-    double quantity;
+    TextView quan;
 
-    public ProductAdapter(Context mCon, List<Product> mData, LayoutInflater mla, TextView total) {
+    public ProductAdapter(Context mCon, List<Product> mData, LayoutInflater mla, TextView total, List<Quantity> mData1, TextView quanti) {
         this.mCon = mCon;
         this.mData = mData;
+        this.mData1=mData1;
         this.mla = mla;
         this.tvTotal = total;
+        this.quan = quanti;
     }
 
     @NonNull
@@ -50,9 +53,11 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
         Locale locale = new Locale("in","ID");
 
         final NumberFormat formatrupiah = NumberFormat.getCurrencyInstance(locale);
+        final NumberFormat format = NumberFormat.getIntegerInstance();
         holder.nmPro.setText(mData.get(position).getTitle());
         holder.imge.setImageResource(mData.get(position).getProductImage());
         holder.hrg.setText(formatrupiah.format(mData.get(position).getPrice()));
+        holder.quantity.setText(format.format(mData1.get(position).getQuantity()));
         holder.cd.setActivated(mData.get(position).selected);
         holder.del.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,9 +72,19 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
 
     public double getTotalPrice() {
         double totalPrice = 0;
-        for (int i = 0; i < mData.size(); ++i) {
-            quantity *= totalPrice;
-            totalPrice = totalPrice + mData.get(i).getPrice() + 10000;
+        double quantity=0;
+        double total = 0;
+        for (int i = 0; i < mData.size(); i++) {
+            totalPrice = totalPrice + mData.get(i).getPrice();
+            quantity = quantity+ mData1.get(i).getQuantity();
+            total = totalPrice*quantity+10000;
+        }
+        return total;
+    }
+    public double getQuan(){
+        double quantity = 0;
+        for (int i=0;i<mData1.size();i++){
+            quantity = quantity + mData1.get(i).getQuantity();
         }
         return quantity;
     }
@@ -87,6 +102,13 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
             price = String.valueOf(mData.get(i).getPrice());
         }
         return price;
+    }
+    public String getQuanty(){
+        String quanty = new String();
+        for (int i = 0; i < mData.size(); ++i) {
+            quanty = String.valueOf(mData1.get(i).getQuantity());
+        }
+        return quanty;
     }
 
     @Override

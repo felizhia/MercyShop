@@ -39,6 +39,7 @@ public class FinalTasAdapter extends RecyclerView.Adapter<FinalTasAdapter.MyView
         Final prod = mData.get(position);
         holder.product.setText(mData.get(position).getProduct());
         holder.price.setText(mData.get(position).getPrice());
+        holder.qyt.setText(mData.get(position).getQuan());
         holder.cdr.setEnabled(true);
 
     }
@@ -51,11 +52,13 @@ public class FinalTasAdapter extends RecyclerView.Adapter<FinalTasAdapter.MyView
     public class MyViewHolder extends RecyclerView.ViewHolder {
         TextView product;
         TextView price;
+        TextView qyt;
         CardView cdr;
         public MyViewHolder(View itemView) {
             super(itemView);
             product= itemView.findViewById(R.id.product);
             price=itemView.findViewById(R.id.price);
+            qyt = itemView.findViewById(R.id.qyt);
             cdr = itemView.findViewById(R.id.finalcrd);
         }
     }

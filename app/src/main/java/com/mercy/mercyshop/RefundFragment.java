@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -32,6 +33,7 @@ public class RefundFragment extends Fragment {
     private EditText alamat;
     private EditText kode;
     private EditText alasan;
+    private CheckBox checkBox;
     private ProgressBar proces;
     private Button btnrefund;
     private static String URL_Refund ="http://mercyshopper.000webhostapp.com/refund.php";
@@ -48,11 +50,17 @@ public class RefundFragment extends Fragment {
         alasan = ref.findViewById(R.id.ials);
         proces = ref.findViewById(R.id.loading1);
         btnrefund = ref.findViewById(R.id.btnrfn);
+        checkBox = ref.findViewById(R.id.che);
 
         btnrefund.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Refundbrg();
+                if (checkBox.isChecked()){
+                    Refundbrg();
+                }else{
+                    Toast.makeText(getActivity(), "Setujui Syarat dan Peraturan Sebelum Melanjutkan", Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
         return ref;

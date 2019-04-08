@@ -35,11 +35,9 @@ public class StatusAdapter extends RecyclerView.Adapter<StatusAdapter.MyViewHold
         holder.tv_title.setText(mData.get(position).getNama());
         holder.tv_harga.setText(mData.get(position).getHarga());
         holder.tv_kode.setText(mData.get(position).getKode());
+        holder.quan.setText(mData.get(position).getQuan());
         holder.card.setEnabled(true);
         holder.sts.setEnabled(true);
-
-
-
     }
 
     @Override
@@ -52,6 +50,7 @@ public class StatusAdapter extends RecyclerView.Adapter<StatusAdapter.MyViewHold
         TextView tv_kode;
         TextView tv_harga;
         TextView sts;
+        TextView quan;
         CardView card;
 
         public MyViewHolder(View itemView) {
@@ -60,6 +59,7 @@ public class StatusAdapter extends RecyclerView.Adapter<StatusAdapter.MyViewHold
             tv_harga = itemView.findViewById(R.id.angka);
             tv_kode = itemView.findViewById(R.id.ktr2);
             sts = itemView.findViewById(R.id.sts1);
+            quan = itemView.findViewById(R.id.vqty);
             card = itemView.findViewById(R.id.carstas);
         }
     }

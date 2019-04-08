@@ -67,6 +67,26 @@
             android:textSize="15sp"
             android:textStyle="bold" />
         <TextView
+            android:id="@+id/qnty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/nm1"
+            android:layout_toRightOf="@id/angka"
+            android:layout_marginLeft="30dp"
+            android:text="Quantity :"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/vqty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/nm1"
+            android:layout_toRightOf="@id/qnty"
+            android:layout_marginLeft="10dp"
+            android:text="0"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+        <TextView
             android:id="@+id/sts"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

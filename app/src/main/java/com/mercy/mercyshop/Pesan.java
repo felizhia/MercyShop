@@ -10,16 +10,26 @@ public class Pesan {
     private String alamt;
     private String jne;
     private String total;
+    private String quan;
 
     public Pesan() {
     }
 
-    public Pesan(String nama, String no, String alamt, String jne, String total) {
+    public Pesan(String nama, String no, String alamt, String jne, String total,String quan) {
         this.nama = nama;
         this.no = no;
         this.alamt = alamt;
         this.jne = jne;
         this.total = total;
+        this.quan = quan;
+    }
+
+    public String getQuan() {
+        return quan;
+    }
+
+    public void setQuan(String quan) {
+        this.quan = quan;
     }
 
     public String getNama() {

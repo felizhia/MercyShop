@@ -47,14 +47,15 @@ public class TasActivity extends AppCompatActivity {
     private TextView tvtitle,tvcategory,tvdesc,tvhrg,nama,hrg,mRatingScale;
     private Button btnblnja;
     private ImageView tvimg;
-    private EditText quan;
     private RatingBar rating;
     private SmileRating smile;
 
     public static List example = new ArrayList<Product>();
+    public static List q = new ArrayList<Quantity>();
     public String title;
     public int productImage;
     public double price;
+    public TextView quan;
     int quantity=0;
 
 
@@ -62,8 +63,6 @@ public class TasActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tas);
-
-
 
         Locale locale = new Locale("in","ID");
 
@@ -74,11 +73,10 @@ public class TasActivity extends AppCompatActivity {
         tvhrg = findViewById(R.id.harga);
         tvimg = findViewById(R.id.tasthumbnail);
         btnblnja = findViewById(R.id.tambahbelanja);
-        quan = findViewById(R.id.hquan);
-
+        quan = findViewById(R.id.quantity_textview);
         smile = findViewById(R.id.smile_rating1);
 
-        Intent intent= getIntent();
+        final Intent intent= getIntent();
         title = intent.getExtras().getString("Title");
         String Category = intent.getExtras().getString("Category");
         String Description = intent.getExtras().getString("Description");
@@ -119,6 +117,7 @@ public class TasActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 KeranjangFragment.example.add(new Product(title, productImage, price));
+                KeranjangFragment.q.add(new Quantity(quantity));
                 ShowPop(view);
             }
         });

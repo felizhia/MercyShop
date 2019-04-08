@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -32,8 +33,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class CheckoutActivity extends AppCompatActivity {
-    private EditText nama,no,alamat,jne,jmlh;
-    private Spinner spin;
+    private EditText nama,no,alamat,jne,jmlh,quans;
+    //private Spinner spin;
     private ProgressBar pro;
     private Button btncheck;
     public String title;
@@ -52,18 +53,24 @@ public class CheckoutActivity extends AppCompatActivity {
         jne = findViewById(R.id.ijasa);
         pro = findViewById(R.id.proses);
         btncheck = findViewById(R.id.btncheck);
-        spin = findViewById(R.id.spinner1);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+        //spin = findViewById(R.id.spinner1);
+
+        /*ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.provinsi, android.R.layout.simple_spinner_item);
 // Specify the layout to use when the list of choices appears
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 // Apply the adapter to the spinner
-        spin.setAdapter(adapter);
+        spin.setAdapter(adapter);*/
 
         Intent intent = getIntent();
         String extrajmlh = intent.getStringExtra("total");
+        String extraquan = intent.getStringExtra("quanti");
+
         jmlh = findViewById(R.id.vttl1);
+        quans = findViewById(R.id.iqu);
+
         jmlh.setText(extrajmlh);
+        quans.setText(extraquan);
 
         btncheck.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,6 +81,7 @@ public class CheckoutActivity extends AppCompatActivity {
                 final String malamat= alamat.getText().toString();
                 final String mjne=jne.getText().toString();
                 final String mttl = jmlh.getText().toString();
+                final String mquan = quans.getText().toString();
 
                 Intent intent = new Intent(CheckoutActivity.this, CheckfinalActivity.class);
                 intent.putExtra("nama", mnama);
@@ -81,6 +89,7 @@ public class CheckoutActivity extends AppCompatActivity {
                 intent.putExtra("alamat", malamat);
                 intent.putExtra("jne", mjne);
                 intent.putExtra("total", mttl);
+                intent.putExtra("quan",mquan);
                 startActivity(intent);
 
             }
@@ -96,7 +105,7 @@ public class CheckoutActivity extends AppCompatActivity {
         final String alamat= this.alamat.getText().toString().trim();
         final String jne= this.jne.getText().toString().trim();
         final String jmlh = this.jmlh.getText().toString().trim();
-
+        final String quant = this.quans.getText().toString().trim();
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_CHECK,
                 new Response.Listener<String>() {
@@ -112,6 +121,7 @@ public class CheckoutActivity extends AppCompatActivity {
                                 intent.putExtra("alamat", alamat);
                                 intent.putExtra("jne", jne);
                                 intent.putExtra("total",jmlh);
+                                intent.putExtra("quan", quant);
                                 Toast.makeText(CheckoutActivity.this, "Terimakasih Sudah Berbelanja di Mercy Shop", Toast.LENGTH_SHORT).show();
                                 pro.setVisibility(View.GONE);
                             }
@@ -139,6 +149,7 @@ public class CheckoutActivity extends AppCompatActivity {
                 params.put("alamat",alamat);
                 params.put("jne",jne);
                 params.put("total",jmlh);
+                params.put("quan",quant);
                 return params;
             }
         };

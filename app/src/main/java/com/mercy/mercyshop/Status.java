@@ -8,14 +8,24 @@ public class Status {
     private String kode;
     private String Nama;
     private String Harga;
+    private String quan;
 
     public Status() {
     }
 
-    public Status(String kode, String nama, String harga) {
+    public Status(String kode, String nama, String harga,String quan) {
         this.kode = kode;
         Nama = nama;
         Harga = harga;
+        this.quan = quan;
+    }
+
+    public String getQuan() {
+        return quan;
+    }
+
+    public void setQuan(String quan) {
+        this.quan = quan;
     }
 
     public String getKode() {
